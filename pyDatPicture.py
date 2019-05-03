@@ -35,14 +35,14 @@ Before you begin:
 EXTRACT_PHOTO_METADATA = False   ### You don't want to do this everytime if you can avoid it (takes time)
 
 # Where are your pictures located? Provide the directory.
-INPUT_PIC_DIRECTORY = '/Users/ericallen/Pictures/'
+INPUT_PIC_DIRECTORY = '/Users/username/Pictures/'
 
 # Final output file: -  Time, Latitude, Longitude
-POST_FILENAME = "EricsImageMetadata_final.csv" 
+POST_FILENAME = "ImageMetadata_final.csv" 
 POST_PROCESSED_DATA = INPUT_PIC_DIRECTORY+POST_FILENAME
 
 # DO YOU ALREADY HAVE THE PHOTO METADATA? (include Path and filename)
-RAW_METADATA_FILE = "/Users/ericallen/Pictures/ImageMetadata_raw.csv"
+RAW_METADATA_FILE = "/Users/username/Pictures/ImageMetadata_raw.csv"
 
 # Quality Control 1: Remove Photos - Speed & Altitude
 REMOVE_PHOTOS_TAKEN_BY_PLANE  = True # PRESET TO FALSE FOR GENERAL USE
@@ -58,6 +58,8 @@ MY_DEVICES = []
 Created on Sun Apr 28 20:45:32 2019
 
 @author: Eric Allen
+Last Modified: May 2, 2019 8:52PM
+
 
 This program extracts geolocation data from photos (returns a csv) and then this program takes that
 csv and cleans the data returning a second csv with all photos that have geographic information.
