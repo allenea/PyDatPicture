@@ -6,7 +6,6 @@ Before you begin:
     1. Download EXIFTOOL: http://owl.phy.queensu.ca/~phil/exiftool/
         http://owl.phy.queensu.ca/~phil/exiftool/install.html    
         
-        
     2. Download Python 3.6
         https://www.python.org/downloads/
         https://www.anaconda.com/distribution/#download-section (I personally like Anaconda)
@@ -25,14 +24,15 @@ Before you begin:
 
     6. Grant Python/Anconda Full Disk Access (to allow it to access the Photos App on macOS)
         https://macpaw.com/how-to/full-disk-access-mojave
+    
+    
 """
-
-
 #%% USER DEFINED VARIABLES - SEE DOCUMENTATION
+########################### EDIT THESE ###################################################
 
 #True  = I want to create the data file
 #False = I already have the data file
-EXTRACT_PHOTO_METADATA = False   ### You don't want to do this everytime if you can avoid it (takes time)
+EXTRACT_PHOTO_METADATA = True   ### You don't want to do this everytime if you can avoid it.
 
 # Where are your pictures located? Provide the directory.
 INPUT_PIC_DIRECTORY = '/Users/username/Pictures/'
@@ -45,12 +45,13 @@ POST_PROCESSED_DATA = INPUT_PIC_DIRECTORY+POST_FILENAME
 RAW_METADATA_FILE = "/Users/username/Pictures/ImageMetadata_raw.csv"
 
 # Quality Control 1: Remove Photos - Speed & Altitude
-REMOVE_PHOTOS_TAKEN_BY_PLANE  = True # PRESET TO FALSE FOR GENERAL USE
+REMOVE_PHOTOS_TAKEN_BY_PLANE  = False # PRESET TO FALSE FOR GENERAL USE
 
 # Quality Control 2: Remove Photos - By Device
 ONLY_MY_DEVICES = False
 MY_DEVICES = []
 #MY_DEVICES = ["iPhone 5","iPhone 6","iPhone X", "HERO4 Silver"]
+##########################################################################################
 
 
 #%%
