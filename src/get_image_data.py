@@ -41,7 +41,7 @@ def getImageData(input_dir,raw_file,recursive=True):
               "-DateTimeOriginal -gps:GPSDateStamp -gps:GPSTimeStamp -gps:GPSLatitude "+\
               "-gps:GPSLatitudeRef -gps:GPSLongitude -gps:GPSLongitudeRef -gps:GPSAltitude "+\
               "-gps:GPSAltitudeRef -gps:GPSSpeed -gps:GPSSpeedRef -gps:GPSTrack -gps:GPSTrackRef "+\
-              "-gps:GPSImgDirection -gps:GPSImgDirectionRef "+ input_dir+" > "+output_file]
+              "-gps:GPSImgDirection -gps:GPSImgDirectionRef "+ str(input_dir) +" > "+ str(output_file)]
     
     
     print(("".join(command[0].split("gps:"))).split("-")[4:-1])

@@ -267,7 +267,7 @@ def user_variables():
     MAPIT = True
     
     ## TODO - 12. PLOT_PATH (ONLY IF YOU ARE PLOTTING WITH THE SAMPLE SCRIPT - WORLD VIEW)
-    PLOT_FILE_NAME = 'sample_plot_pictures.jpg'
+    PLOT_FILE_NAME = 'sample_plot_pictures' ### DO NOT USE A FILE EXTENSION
     PLOT_PATH = os.path.join(INPUT_PIC_DIRECTORY, PLOT_FILE_NAME)
     
     ## TODO - 13. REVERSE GEOCODE

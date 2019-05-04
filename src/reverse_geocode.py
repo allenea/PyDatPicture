@@ -73,7 +73,7 @@ def reverse_geocode(usr_vars):
     
     
     ## TODO CHANGE THIS NAME IF YOU WOULD LIKE TO SAVE IT AS SOMETHING ELSE
-    geocode_file = usr_vars['POST_PROCESSED_DATA'].replace(".csv","_geocode.csv")
+    geocode_file = str(usr_vars['POST_PROCESSED_DATA']).replace(".csv","_geocode.csv")
     
     
     outHEADER = ["Time", "Longitude", "Latitude","Address"]
