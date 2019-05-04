@@ -24,6 +24,9 @@ This program was written with the intention of having the user program as little
 	- **matplotlib** (RECOMMENDED: For map making: <https://scipy.org/install.html>)
 	- **cartopy** (RECOMMENDED: For map making: <https://scitools.org.uk/cartopy/docs/latest/installing.html#installing>)
 	- **geopy** (OPTIONAL: Only needed for reserve geocoding which is a limited feature.)
+	
+If you are using anaconda, then there is a chance (fingers crossed) that any required missing software will be automatically installed. This has not been tested.
+
 
 ## The User only needs to modify the USER_DEFINED_VARIABLES.py file. More often than not the default settings will not need to be changed.
 - Compatible with Windows and OS X systems. Unknown for Linux. 
