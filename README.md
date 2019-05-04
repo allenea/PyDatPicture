@@ -22,7 +22,7 @@ This is a python program written to extract metadata from images on your compute
     - <B>USER_DEFINED_VARIABLES.py</B> Contains the 10 variables that may need to be changed according to your computer and how you want to search and get the data. Contains instructions and examples.
 
 
-    <B>src
+    <B>src</B>
         - <B>wget.py</B> is a unlicensed program that supports in the downloading of the EXIFTOOL software in the event you haven't downloaded/installed it. This does not actually install the program. Instead it puts it on your desktop.
     
         - <B>pDP_Setup.py</B> will check to make sure you have the necessary software installed. If you are using Anaconda and are missing software, then pDP_Setup will assist in the installation process. Otherwise, you'll need to follow the instructions in the documentation.
@@ -42,7 +42,7 @@ This is a python program written to extract metadata from images on your compute
         - <B>map_it.py</B> is starter code for mapping your data in python. See the Cartopy online documentation.
         
 
-    <B>Sample_Figures
+    <B>Sample_Figures</B>
     
         - <B>testplot_pictures.JPG</B> is the sample cartopy world view figure
         
@@ -55,7 +55,7 @@ This is a python program written to extract metadata from images on your compute
         - <B>sample3.JPG</B> is a quick 6-pannel city view ArcGIS Pro created figure
         
         
-    <B>Documentation
+    <B>Documentation</B>
     
         - <B>meta.yaml</B> I started trying to figure out how to host this code on Anaconda to do a conda install pyDatPicture (not working yet).
         
