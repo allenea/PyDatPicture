@@ -19,10 +19,14 @@ def map_data(longitude,latitude,plt_name):
     fig = plt.figure()
     ax = fig.add_subplot(1, 1, 1, projection=ccrs.PlateCarree())
     
+    # TO ZOOM IN ON AN AREA
+    #ax.set_extent([WESTERN_LONGITUDE, EASTERN_LONGITUDE, SOUTHERN_LATITUDE, NORTHERN_LATITUDE], ccrs.PlateCarree())
+
     ax.plot(longitude, latitude, 'o', color='r', transform=ccrs.PlateCarree())
     
     ax.stock_img()
     ax.coastlines()
-    
+    #ax.add_feature(cfeature.BORDERS, linestyle=':')
+
     plt.savefig(plt_name)
     plt.show()
