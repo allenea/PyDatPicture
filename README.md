@@ -2,7 +2,7 @@
 By Eric Allen
 Last Modified: 4 May 2019 at 3:30PM EDT
 
-##Travel Much? Use your pictures to figure out where you've been.
+## Travel Much? Use your pictures to figure out where you've been.
 This is a python program written to extract metadata from images on your computer and process that data into a csv file with time, latitude, and longitude. The output can be mapped in GIS or Python.
 
 ## The User only needs to modify the USER_DEFINED_VARIABLES.py file. More often than not the default settings will not need to be changed.
