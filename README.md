@@ -9,21 +9,21 @@ This program was written with the intention of having the user program as little
 
 
 ## Required Software
-- EXIFTOOLS (By Phil Harvey: <https://sno.phy.queensu.ca/~phil/exiftool/>)
-- Python 3 (Recommend: <Anaconda https://www.anaconda.com/distribution/#download-section>)
+- EXIFTOOLS (REQUIRED: Phil Harvey: <https://sno.phy.queensu.ca/~phil/exiftool/>)
+- Python 3 (REQUIRED: I RECOMMEND: <Anaconda https://www.anaconda.com/distribution/#download-section>)
 	**WITH THE FOLLOWING PYTHON MODULES:**
-	- numpy
-	- pandas
-	- matplotlib
-	- cartopy
-	- geopy (OPTIONAL: Only needed for reserve geocoding which is a limited feature)
-	- datetime (Should come pre-installed with python)
-	- os (Should come pre-installed with python)
-	- sys (Should come pre-installed with python)
-	- shutil (Should come pre-installed with python)
-	- pathlib (Should come pre-installed with python)
-	- getpass (Should come pre-installed with python)
-	- conda (Should come pre-installed with anaconda)
+	- **numpy** (REQUIRED <https://scipy.org/install.html>)
+	- **pandas** (REQUIRED <https://pandas.pydata.org/pandas-docs/stable/install.html>)
+	- **matplotlib** (RECOMMENDED: For map making: <https://scipy.org/install.html>)
+	- **cartopy** (RECOMMENDED: For map making: <https://scitools.org.uk/cartopy/docs/latest/installing.html#installing>)
+	- **geopy** (OPTIONAL: Only needed for reserve geocoding which is a limited feature)
+	- **datetime** (REQUIRED: Should come pre-installed with python OR remove the reformat_time part of the code)
+	- **os** (REQUIRED: Should come pre-installed with python)
+	- **sys** (REQUIRED: Should come pre-installed with python)
+	- **shutil** (REQUIRED: Should come pre-installed with python)
+	- **pathlib** (REQUIRED: Should come pre-installed with python)
+	- **getpass** (REQUIRED: Should come pre-installed with python)
+	- **conda** (REQUIRED FOR ANACONDA: Should come pre-installed with anaconda)
 	
 
 ## The User only needs to modify the USER_DEFINED_VARIABLES.py file. More often than not the default settings will not need to be changed.
