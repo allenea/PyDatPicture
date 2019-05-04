@@ -1,0 +1,53 @@
+{% set version = "1.1.0" %}
+
+package:
+  name: pyDatPicture
+  version: {{ version }}
+
+source:
+  url: ##.tar.gz file on github repo
+  sha256: f3832918bc3c66617f92e35f5d70729187676313caa60c187eb0f28b8fe5e3b5 ## No idea
+
+build:
+  noarch: python
+  number: 0
+  script: python -m pip install --no-deps --ignore-installed .
+
+requirements:
+  host: ## NO IDEA BUT PANDAS AND CARTOPY HAD THIS
+    - cctools 895 h7512d6f_0
+    - clang 4.0.1 h662ec87_0
+    - clang_osx-64 4.0.1 h1ce6c1d_11
+    - clangxx 4.0.1 hc9b4283_0
+    - clangxx_osx-64 4.0.1 h22b1bf0_11
+    - compiler-rt 4.0.1 h5487866_0
+    - ld64 274.2 h7c2db76_0
+    - libcxx 4.0.1 h579ed51_0
+    - libcxxabi 4.0.1 hebd6815_0
+    - llvm 4.0.1 hc748206_0
+    - llvm-lto-tapi 4.0.1 h6701bc3_0
+  run:
+    - python
+#import getpass
+#import os
+#import sys
+#import shutil
+#import datetime
+#import numpy
+#import matplotlib.pyplot
+#import pandas
+#import cartopy.crs
+test:
+  imports:
+    - pyDatPicture
+
+about:
+  home: https://github.com/allenea/pyDatPicture
+  license: GNU General Public License v3.0
+  summary: 'Getting geolocation from photos on your computer as usable data.'
+  description: |
+    Do you like to travel and take pictures? Now you can track where you've been using pyDatPicture.
+    This module analyzes pictures/videos to identify geolocation data returning a list of times, latitude, and longitudes that can then be mapped in python or GIS.
+  dev_url: https://github.com/allenea/pyDatPicture
+  doc_url: https://github.com/allenea/pyDatPicture/blob/master/PyDatPicture.ipynb
+  doc_source_url: https://github.com/allenea/pyDatPicture/blob/master/README.md
