@@ -65,11 +65,13 @@ def main():
     # Process the data with quality control routines to give you a csv file with a list of time,longitude,latitude 
     data = pyDat.pyDatPicture(usr_vars)
     
-    # LIMITED TO 100 GEOCODES... Use on specific and limited pictures
-    reverse_geocode(usr_vars)
+    if usr_vars['REVERSE_GEOCODE'] == True:
+        # LIMITED TO 100 GEOCODES... Use on specific and limited pictures 
+        reverse_geocode(usr_vars)
 
-    # Python Mapping of Data
-    map_data(data['Longitude'],data['Latitude'],usr_vars['PLOT_PATH'])
+    if usr_vars['MAPIT'] == True:
+        # Python Mapping of Data
+        map_data(data['Longitude'],data['Latitude'],usr_vars['PLOT_PATH'])
     
     print("\n\npyDatPicture Complete")
     

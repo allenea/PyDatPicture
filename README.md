@@ -14,9 +14,6 @@ This program was written with the intention of having the user program as little
 	**WITH THE FOLLOWING PYTHON MODULES:**
 	- **numpy** (REQUIRED <https://scipy.org/install.html>)
 	- **pandas** (REQUIRED <https://pandas.pydata.org/pandas-docs/stable/install.html>)
-	- **matplotlib** (RECOMMENDED: For map making: <https://scipy.org/install.html>)
-	- **cartopy** (RECOMMENDED: For map making: <https://scitools.org.uk/cartopy/docs/latest/installing.html#installing>)
-	- **geopy** (OPTIONAL: Only needed for reserve geocoding which is a limited feature)
 	- **datetime** (REQUIRED: Should come pre-installed with python OR remove the reformat_time part of the code)
 	- **os** (REQUIRED: Should come pre-installed with python)
 	- **sys** (REQUIRED: Should come pre-installed with python)
@@ -24,7 +21,9 @@ This program was written with the intention of having the user program as little
 	- **pathlib** (REQUIRED: Should come pre-installed with python)
 	- **getpass** (REQUIRED: Should come pre-installed with python)
 	- **conda** (REQUIRED FOR ANACONDA: Should come pre-installed with anaconda)
-	
+	- **matplotlib** (RECOMMENDED: For map making: <https://scipy.org/install.html>)
+	- **cartopy** (RECOMMENDED: For map making: <https://scitools.org.uk/cartopy/docs/latest/installing.html#installing>)
+	- **geopy** (OPTIONAL: Only needed for reserve geocoding which is a limited feature.)
 
 ## The User only needs to modify the USER_DEFINED_VARIABLES.py file. More often than not the default settings will not need to be changed.
 - Compatible with Windows and OS X systems. Unknown for Linux. 

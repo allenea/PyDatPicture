@@ -71,10 +71,12 @@ def reverse_geocode(usr_vars):
     OUT_DATA[:,1] = IN_DATA[:,1]
     OUT_DATA[:,2] = IN_DATA[:,2]
     
+    
+    ## TODO CHANGE THIS NAME IF YOU WOULD LIKE TO SAVE IT AS SOMETHING ELSE
     geocode_file = usr_vars['POST_PROCESSED_DATA'].replace(".csv","_geocode.csv")
+    
+    
     outHEADER = ["Time", "Longitude", "Latitude","Address"]
-    
-    
     
     for idy in range(len(OUT_DATA)):
         latlonstr = str(OUT_DATA[idy][2])+" , "+str(OUT_DATA[idy][1])

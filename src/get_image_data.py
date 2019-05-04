@@ -10,7 +10,7 @@ this code actually gets the raw metadata from your photos and saves it to the Im
 """
 import os
 
-def getImageData(input_dir,recursive=True):
+def getImageData(input_dir,raw_file,recursive=True):
     """
     This function retrieves the metadata and stores it in a csv file.
     
@@ -23,17 +23,17 @@ def getImageData(input_dir,recursive=True):
     """
     
     #This file stores the raw data from your picture (including location)
-    output_file = input_dir+'ImageMetadata_raw.csv' ## TODO SAVED IN THE INPUT DIRECTORY... UNLESS YOU SPECIFY A PATH
+    output_file = input_dir+raw_file ## TODO SAVED IN THE INPUT DIRECTORY... UNLESS YOU SPECIFY A PATH
 
     # Check to see if the user wants to search all files and sub-folders
     if recursive == True: r = "-r"
     else: r = ""
     
-    if ".csv" in output_file:  print('Your Output File Is: ' + output_file)
+    if ".csv" in output_file:  print('Your RAW_METADATA_FILE is located: ' + output_file)
     else:
         if "." in output_file: output_file = output_file.split(".")[0] + ".csv" # Make it a csv file
         else:   output_file = output_file + ".csv"
-        print('Your New Output File Is: ' + output_file)
+        print('Your RAW_METADATA_FILE is located: ' + output_file)
 
     print("\Having some warnings/errors is normal\n")
     
