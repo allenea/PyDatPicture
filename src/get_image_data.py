@@ -23,7 +23,7 @@ def getImageData(input_dir,raw_file,recursive=True):
     """
     
     #This file stores the raw data from your picture (including location)
-    output_file = input_dir+raw_file ## TODO SAVED IN THE INPUT DIRECTORY... UNLESS YOU SPECIFY A PATH
+    output_file = os.path.join(input_dir,raw_file) ## TODO SAVED IN THE INPUT DIRECTORY... UNLESS YOU SPECIFY A PATH
 
     # Check to see if the user wants to search all files and sub-folders
     if recursive == True: r = "-r"

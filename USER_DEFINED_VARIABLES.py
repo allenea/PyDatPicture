@@ -199,11 +199,11 @@ def user_variables():
     ## TODO - 2. INPUT_PIC_DIRECTORY
     # FOR APPLE-OS X USERS
     if OS_SYSTEM == "darwin":  #APPLE- MAC
-        INPUT_PIC_DIRECTORY = os.path.join("/","Users", USER_ID, "Pictures","/")  #macos
+        INPUT_PIC_DIRECTORY = Path("/","Users", USER_ID, "Pictures")  #macos
         
     # FOR WINDOWS USERS
     elif OS_SYSTEM == "win32": #MICROSOFT - WINDOWS
-        INPUT_PIC_DIRECTORY = os.path.join( "C:", "Users", USER_ID,"Pictures")  #windows
+        INPUT_PIC_DIRECTORY = Path( "C:", "Users", USER_ID,"Pictures")  #windows
         
     # FOR LINUX USERS   
     else: #linux,?
@@ -216,7 +216,7 @@ def user_variables():
     
     
     ## TODO - 4. POST_PROCESSED_DATA
-    POST_PROCESSED_DATA = INPUT_PIC_DIRECTORY+POST_FILENAME
+    POST_PROCESSED_DATA = os.path.join(INPUT_PIC_DIRECTORY, POST_FILENAME)
     
     
     ## TODO - 5. RAW_METADATA_FILE
@@ -232,11 +232,11 @@ def user_variables():
         ## TODO - 6. NAME FILE AND PATH TO THE FILE, IF YOU ALREADY HAVE ONE 
         # FOR APPLE-OS X USERS
         if OS_SYSTEM == "darwin": # APPLE - OS X
-            RAW_METADATA_FILE = Path("/","Users", USER_ID, "Pictures", RAW_FILE,"/")  #macos
+            RAW_METADATA_FILE = Path("/","Users", USER_ID, "Pictures", RAW_FILE)  #macos
         
         # FOR WINDOWS USERS
         elif OS_SYSTEM == "win32": # MICROSOFT - WINDOWS
-            RAW_METADATA_FILE = os.path.join( "C:", "Users", USER_ID, "Pictures", RAW_FILE)  #windows
+            RAW_METADATA_FILE = Path( "C:", "Users", USER_ID, "Pictures", RAW_FILE)  #windows
         
         # FOR LINUX USERS       
         else: # Linux,?
@@ -268,7 +268,7 @@ def user_variables():
     
     ## TODO - 12. PLOT_PATH (ONLY IF YOU ARE PLOTTING WITH THE SAMPLE SCRIPT - WORLD VIEW)
     PLOT_FILE_NAME = 'sample_plot_pictures.jpg'
-    PLOT_PATH = INPUT_PIC_DIRECTORY + PLOT_FILE_NAME
+    PLOT_PATH = os.path.join(INPUT_PIC_DIRECTORY, PLOT_FILE_NAME)
     
     ## TODO - 13. REVERSE GEOCODE
     REVERSE_GEOCODE = False # THIS IS LIMITED TO 100 PHOTOS. Use knowing what is involved. Better geocoders can  be paid and implemented.
