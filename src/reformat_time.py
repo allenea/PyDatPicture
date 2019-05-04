@@ -4,6 +4,9 @@
 Created on Sat May  4 00:38:17 2019
 
 @author: ericallen
+
+Reformats the date and time
+
 """
 import datetime as dt
 

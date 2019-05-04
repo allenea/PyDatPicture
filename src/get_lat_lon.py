@@ -4,6 +4,8 @@
 Created on Sat May  4 00:38:19 2019
 
 @author: ericallen
+
+parses the lat/lon information to covert from DMS to DD adjusted for reference.
 """
 
 def getLatLon(lat,lon,lat_ref, lon_ref):

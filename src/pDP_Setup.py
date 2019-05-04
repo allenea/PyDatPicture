@@ -34,23 +34,18 @@ Created on Sat May  4 00:09:32 2019
         https://scitools.org.uk/cartopy/docs/latest/installing.html
         conda install -c conda-forge cartopy
 
-    7. Install Datetime for Python (This should come preinstalled along with: os, sys, shutil, getpass)
+    7. Install Datetime for Python (This should come preinstalled along with: os, sys, shutil, getpass.)
         https://pypi.org/project/DateTime/
-        
-        
 
 """
 def setup_pyDatPicture():
-    
-    import wget
+
     try:
-        import getpass, os, sys,shutil
-        import pathlib
+        import getpass, os, sys,shutil,pathlib
     except:
         print("One or more (typically) pre-installed python modules are not installed: getpass, os, sys, shutil")
         return False
-
-        
+    
     USER_ID = getpass.getuser()
     OS_SYSTEM = sys.platform
     
@@ -59,40 +54,35 @@ def setup_pyDatPicture():
     
     if 'Anaconda' in sys.version:
         try:
-            import numpy
-            import pandas
-            import matplotlib.pyplot
-            import cartopy
             import conda.cli
-        except:
-            pass
+            import numpy, pandas, matplotlib.pyplot, cartopy, datetime
+
+        except:        
+            if 'numpy' in sys.modules:  pass 
+            else:   conda.cli.main('conda', 'install',  '-y', 'numpy');
+            
+            if 'pandas' in sys.modules:     pass
+            else:   conda.cli.main('conda', 'install',  '-y', 'pandas')
+            
+            if 'matplotlib' in sys.modules:    pass 
+            else:   conda.cli.main('conda', 'install',  '-y', 'matplotlib')
+            
+            if 'cartopy' in sys.modules:    pass
+            else:   conda.cli.main('conda', 'install',  '-y', 'cartopy')
+            
+            if 'datetime' in sys.modules:    pass
+            else:   conda.cli.main('conda', 'install',  '-y', 'datetime') ## Not 100% sure this is right since this usually comes pre-installed.
         
-        if 'numpy' in sys.modules:  pass 
-        else:   conda.cli.main('conda', 'install',  '-y', 'numpy')
-        
-        if 'pandas' in sys.modules:     pass
-        else:   conda.cli.main('conda', 'install',  '-y', 'pandas')
-        
-        if 'matplotlib' in sys.modules:    pass 
-        else:   conda.cli.main('conda', 'install',  '-y', 'matplotlib')
-        
-        if 'cartopy' in sys.modules:    pass
-        else:   conda.cli.main('conda', 'install',  '-y', 'cartopy')
-        
+            # MAKE SURE THEY CAN BE IMPORTED AFTER THE INSTALL
+            try:
+                import numpy, pandas, matplotlib.pyplot, cartopy, datetime
+            except:
+                print("Could not import one or more of the modules - Anaconda.\nTry restarting Anaconda and re-run the program otherwise follow the documentation to download the necessary modules." )
+                return False
+            
+    else: # Not Anaconda environment
         try:
-            import datetime
-        except:
-            print("Python module ' datetime ' is not installed. Install and try again.")
-            return False
-        
-        
-    else: # Not Anaconda
-        try:
-            import datetime
-            import numpy
-            import matplotlib.pyplot
-            import pandas
-            import cartopy
+            import numpy,pandas,matplotlib.pyplot,cartopy,datetime
         except:
             if 'numpy' in sys.modules:  pass 
             else:   print("NUMPY MODULE NOT INSTALLED")
@@ -105,9 +95,16 @@ def setup_pyDatPicture():
             
             if 'cartopy' in sys.modules:    pass
             else:   print("CARTOPY MODULE NOT INSTALLED")
+            
+            if 'datetime' in sys.modules:    pass
+            else:   print("DATETIME MODULE NOT INSTALLED")
             return False
     
+    
+    
     if isEXIFTOOL == None:
+        try:    import wget
+        except: print("Warning: Missing the wget.py package. Not found by pDP_Setup."); return False
         
         if OS_SYSTEM == "linux" or OS_SYSTEM == "linux2":
             print("WARNING: Linux May or May Not Be a Supported System (suppressed)") 
@@ -152,5 +149,5 @@ def setup_pyDatPicture():
     else:
         print("EXIFTOOLS by Phil Harvey is already installed on your system.... Continuing....\n\n")
         pass
-    
+
     return True

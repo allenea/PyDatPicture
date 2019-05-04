@@ -4,6 +4,9 @@
 Created on Sat May  4 00:38:19 2019
 
 @author: ericallen
+
+this code actually gets the raw metadata from your photos and saves it to the ImageMetadata_raw.csv file.
+
 """
 import os
 
@@ -20,7 +23,7 @@ def getImageData(input_dir,recursive=True):
     """
     
     #This file stores the raw data from your picture (including location)
-    output_file = 'ImageMetadata_raw' # SAVED IN RUN DIRECTORY... UNLESS YOU SPECIFY A PATH
+    output_file = input_dir+'ImageMetadata_raw.csv' ## TODO SAVED IN THE INPUT DIRECTORY... UNLESS YOU SPECIFY A PATH
 
     # Check to see if the user wants to search all files and sub-folders
     if recursive == True: r = "-r"
@@ -28,15 +31,11 @@ def getImageData(input_dir,recursive=True):
     
     if ".csv" in output_file:  print('Your Output File Is: ' + output_file)
     else:
-        if "." in output_file: output_file = output_file.split(".")[0] + ".csv"
+        if "." in output_file: output_file = output_file.split(".")[0] + ".csv" # Make it a csv file
         else:   output_file = output_file + ".csv"
         print('Your New Output File Is: ' + output_file)
-   
-    print("\nSTORING THE FOLLOWING DATA: Source File, Model DateTimeOriginal, GPSDateStamp, GPSTimeStamp, "+
-          "GPSLatitude, GPSLatitudeRef, GPSLongitude, GPSLongitudeRef, GPSAltitude, GPSAltitudeRef, "+
-          "GPSSpeed, GPSSpeedRef, GPSTrack, GPSTrackRef, GPSImgDirection, GPSImgDirectionRef")
-    
-    print("\nSome Warnings/Errors are Okay\n")
+
+    print("\Having some warnings/errors is normal\n")
     
     command = ["exiftool -csv "+r+ " -ee -SourceFile -Model "+\
               "-DateTimeOriginal -gps:GPSDateStamp -gps:GPSTimeStamp -gps:GPSLatitude "+\
@@ -44,7 +43,11 @@ def getImageData(input_dir,recursive=True):
               "-gps:GPSAltitudeRef -gps:GPSSpeed -gps:GPSSpeedRef -gps:GPSTrack -gps:GPSTrackRef "+\
               "-gps:GPSImgDirection -gps:GPSImgDirectionRef "+ input_dir+" > "+output_file]
     
-    print(command[0],"\n")
+    
+    print(("".join(command[0].split("gps:"))).split("-")[4:-1])
+    
+    print("\n",command[0],"\n")
+    
     os.system(command[0])
     
     return output_file
