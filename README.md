@@ -7,6 +7,25 @@ This is a python program written to extract metadata from images on your compute
 
 This program was written with the intention of having the user program as little as possible. The goal is to have you download the software and just run it.
 
+
+## Required Software
+- EXIFTOOLS (By Phil Harvey: <https://sno.phy.queensu.ca/~phil/exiftool/>)
+- Python 3 (Recommend: <Anaconda https://www.anaconda.com/distribution/#download-section>)
+	**WITH THE FOLLOWING PYTHON MODULES:**
+	- numpy
+	- pandas
+	- matplotlib
+	- cartopy
+	- geopy (OPTIONAL: Only needed for reserve geocoding which is a limited feature)
+	- datetime (Should come pre-installed with python)
+	- os (Should come pre-installed with python)
+	- sys (Should come pre-installed with python)
+	- shutil (Should come pre-installed with python)
+	- pathlib (Should come pre-installed with python)
+	- getpass (Should come pre-installed with python)
+	- conda (Should come pre-installed with anaconda)
+	
+
 ## The User only needs to modify the USER_DEFINED_VARIABLES.py file. More often than not the default settings will not need to be changed.
 - Compatible with Windows and OS X systems. Unknown for Linux. 
     - For windows users it is assumed that you are on the C: drive.
