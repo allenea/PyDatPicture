@@ -13,7 +13,7 @@ This is a python program written to extract metadata from images on your compute
 - Depending on the number of photos you have the initial gathering of photo data could take a few minutes to a few hours.
 
 
-##FILE STRUCTURE:
+## FILE STRUCTURE:
 
 <B>pyDatPicture</B>
 
