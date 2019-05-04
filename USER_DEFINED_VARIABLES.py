@@ -199,7 +199,7 @@ def user_variables():
     ## TODO - 2. INPUT_PIC_DIRECTORY
     # FOR APPLE-OS X USERS
     if OS_SYSTEM == "darwin":  #APPLE- MAC
-        INPUT_PIC_DIRECTORY = os.path.join("/","Users", USER_ID, "Pictures")  #macos
+        INPUT_PIC_DIRECTORY = os.path.join("/","Users", USER_ID, "Pictures","/")  #macos
         
     # FOR WINDOWS USERS
     elif OS_SYSTEM == "win32": #MICROSOFT - WINDOWS
@@ -232,7 +232,7 @@ def user_variables():
         ## TODO - 6. NAME FILE AND PATH TO THE FILE, IF YOU ALREADY HAVE ONE 
         # FOR APPLE-OS X USERS
         if OS_SYSTEM == "darwin": # APPLE - OS X
-            RAW_METADATA_FILE = Path("/","Users", USER_ID, "Pictures", RAW_FILE)  #macos
+            RAW_METADATA_FILE = Path("/","Users", USER_ID, "Pictures", RAW_FILE,"/")  #macos
         
         # FOR WINDOWS USERS
         elif OS_SYSTEM == "win32": # MICROSOFT - WINDOWS
