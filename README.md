@@ -5,6 +5,8 @@ Last Modified: 4 May 2019 at 3:30PM EDT
 ## Travel Much? Use your pictures to figure out where you've been.
 This is a python program written to extract metadata from images on your computer and process that data into a csv file with time, latitude, and longitude. The output can be mapped in GIS or Python.
 
+This program was written with the intention of having the user program as little as possible. The goal is to have you download the software and just run it.
+
 ## The User only needs to modify the USER_DEFINED_VARIABLES.py file. More often than not the default settings will not need to be changed.
 - Compatible with Windows and OS X systems. Unknown for Linux. 
     - For windows users it is assumed that you are on the C: drive.
