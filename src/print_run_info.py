@@ -27,12 +27,12 @@ def print_info(usr_vars, isSetUp,USER_ID,OS_SYSTEM):
     print("REMOVE_PHOTOS_TAKEN_BY_PLANE: ", usr_vars['REMOVE_PHOTOS_TAKEN_BY_PLANE'])
     print("ONLY_MY_DEVICES: ", usr_vars['ONLY_MY_DEVICES'])
     print("MY_DEVICES: ", usr_vars['MY_DEVICES'])
+    print("DETECT_OUTLIARS: ", usr_vars['DETECT_OUTLIARS'])
     print()
     print("MAPIT: ", usr_vars['MAPIT'])
     print("PLOT_PATH: ", usr_vars['PLOT_PATH'])
     print("REVERSE_GEOCODE: ", usr_vars['REVERSE_GEOCODE'])
     print("DO_RECURSIVE: ", usr_vars['DO_RECURSIVE'])
-    
-    print();
+    print()
     print("pyDatPicture was developed by Eric Allen (Twitter: @THE_Eric_Allen)")
     print();print()

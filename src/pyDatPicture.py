@@ -129,9 +129,9 @@ def pyDatPicture(usr_vars):
     keep_data = keep_data[:count,:]
     print("Number of Pictures with geolocation: ",count)
     
-    outHEADER = ["Time", "Longitude", "Latitude"]
+    outHEADER = ["Date_Time", "Longitude", "Latitude"]
     dfwrite = pd.DataFrame(keep_data,columns=outHEADER)
-    dfsort = dfwrite.sort_values(['Time'])
+    dfsort = dfwrite.sort_values(['Date_Time'])
     df_drop = dfsort.drop_duplicates()
     df = pd.DataFrame(df_drop,columns=outHEADER)
     print("Number of Unique Pictures with geolocation: ", len(df))

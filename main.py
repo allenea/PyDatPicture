@@ -51,7 +51,9 @@ def main():
         import src.pyDatPicture as pyDat
         from src.map_it import map_data
         from src.reverse_geocode import reverse_geocode
-    
+        from src.detectOutliers import detectOutliers
+        
+        
     # Get Systems Info
     USER_ID = getpass.getuser()
     OS_SYSTEM = sys.platform
@@ -69,13 +71,15 @@ def main():
         # LIMITED TO 100 GEOCODES... Use on specific and limited pictures 
         reverse_geocode(usr_vars)
 
+    if usr_vars['DETECT_OUTLIARS'] == True:   
+        ## USES LIMITED GEOCODING
+        QCd_data = detectOutliers(data,usr_vars,geo_fmt="degrees",percentile="99th")
+
     if usr_vars['MAPIT'] == True:
         # Python Mapping of Data
-        map_data(data['Longitude'],data['Latitude'],usr_vars['PLOT_PATH'])
+        map_data(QCd_data['Longitude'],QCd_data['Latitude'],usr_vars['PLOT_PATH'])
     
     print("\n\npyDatPicture Complete")
-    
-    
     
     
 # Execute main() function

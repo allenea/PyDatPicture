@@ -75,13 +75,12 @@ def reverse_geocode(usr_vars):
     ## TODO CHANGE THIS NAME IF YOU WOULD LIKE TO SAVE IT AS SOMETHING ELSE
     geocode_file = str(usr_vars['POST_PROCESSED_DATA']).replace(".csv","_geocode.csv")
     
-    
-    outHEADER = ["Time", "Longitude", "Latitude","Address"]
+    outHEADER = ["Date_Time", "Longitude", "Latitude","Address"]
     
     for idy in range(len(OUT_DATA)):
         latlonstr = str(OUT_DATA[idy][2])+" , "+str(OUT_DATA[idy][1])
         OUT_DATA[idy][3], (latitude, longitude) = geolocator.reverse(latlonstr)
-        print(OUT_DATA[idy][3])
+        #print(OUT_DATA[idy][3])
         
     df_w_Address = pd.DataFrame(OUT_DATA,columns=outHEADER)
     df_w_Address.to_csv(geocode_file,index=False)
