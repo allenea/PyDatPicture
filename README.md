@@ -1,6 +1,6 @@
 # pyDatPicture
 By Eric Allen
-Last Modified: 4 May 2019 at 3:30PM EDT
+Last Modified: 5 May 2019 at 2:00AM EDT
 
 ## Travel Much? Use your pictures to figure out where you've been.
 This is a python program written to extract metadata from images on your computer and process that data into a csv file with time, latitude, and longitude. The output can be mapped in GIS or Python.
@@ -23,7 +23,7 @@ This program was written with the intention of having the user program as little
 	- **conda** (REQUIRED FOR ANACONDA: Should come pre-installed with anaconda)
 	- **matplotlib** (RECOMMENDED: For map making: <https://scipy.org/install.html>)
 	- **cartopy** (RECOMMENDED: For map making: <https://scitools.org.uk/cartopy/docs/latest/installing.html#installing>)
-	- **geopy** (OPTIONAL: Only needed for reserve geocoding which is a limited feature.)
+	- **geopy** (RECOMMENDED: Only needed for reserve geocoding in detecting outliars (full feature) or in the reverse_geocode (limited feature).)
 	
 If you are using anaconda, then there is a chance (fingers crossed) that any required missing software will be automatically installed. This has not been tested.
 
