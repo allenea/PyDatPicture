@@ -222,7 +222,7 @@ def user_variables():
     
     #%% QUALITY CONTROL AND POST PROCESSING
     ## TODO - 5. REMOVE_PHOTOS_TAKEN_BY_PLANE
-    REMOVE_PHOTOS_TAKEN_BY_PLANE = True        # Quality Control 1: Remove Photos - Speed & Altitude
+    REMOVE_PHOTOS_TAKEN_BY_PLANE = False        # Quality Control 1: Remove Photos - Speed & Altitude
     
     ## TODO - 6. ONLY_MY_DEVICES
     ONLY_MY_DEVICES = False                     # Quality Control 2: Remove Photos - By Device... DETECT_OUTLIARS might be a better option
@@ -231,13 +231,13 @@ def user_variables():
     MY_DEVICES = []
 
     ## TODO - 8. DETECT_OUTLIAR
-    DETECT_OUTLIARS = True # THIS IS LIMITED TO 100 PHOTOS. Use knowing what is involved. Better geocoders can  be paid and implemented.
+    DETECT_OUTLIARS = True
     
     ## TODO - 9. MAPIT
     MAPIT = True
 
     ## TODO - 10. REVERSE GEOCODE
-    REVERSE_GEOCODE = True # THIS IS LIMITED TO 100 PHOTOS. Use knowing what is involved. Better geocoders can  be paid and implemented.
+    REVERSE_GEOCODE = False # THIS IS LIMITED TO 100 PHOTOS. Use knowing what is involved. Better geocoders can  be paid and implemented.
     
     ## 11. OPTIONAL - DO_RECURSIVE - Check all folders and subfolders at the path provided
     DO_RECURSIVE = True
