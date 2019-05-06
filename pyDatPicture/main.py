@@ -31,7 +31,6 @@ OUTPUT (CSV FILE):
     Latitude - (float) Decimal Degrees (Negative values are South)
     Longitude - (float) Decimal Degrees (Negative values are West)
     * Address -   OPTIONAL IN A LIMITED CAPACITY-Free (str) Reverse geocoded address (OR WITH PAID API)
-        - Pinpoint Accuracy is questionable... might break the program
 
 """
 #%% LOAD SOFTWARE
@@ -66,15 +65,16 @@ def main():
     
     # Process the data with quality control routines to give you a csv file with a list of time,longitude,latitude 
     data = pyDat.pyDatPicture(usr_vars)
-    
-    if usr_vars['REVERSE_GEOCODE'] == True:
-        # LIMITED TO 100 GEOCODES... Use on specific and limited pictures 
-        reverse_geocode(usr_vars)
+
 
     if usr_vars['DETECT_OUTLIARS'] == True:   
         ## USES LIMITED GEOCODING
         QCd_data = detectOutliers(data,usr_vars,geo_fmt="degrees",percentile="99th")
-
+        
+    if usr_vars['REVERSE_GEOCODE'] == True:
+        # LIMITED TO 100 GEOCODES... Use on specific and limited pictures 
+        
+        reverse_geocode(usr_vars)
     if usr_vars['MAPIT'] == True:
         # Python Mapping of Data
         map_data(QCd_data['Longitude'],QCd_data['Latitude'],usr_vars['PLOT_PATH'])
