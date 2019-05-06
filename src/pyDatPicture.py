@@ -22,8 +22,8 @@ import sys
 import os
 import numpy as np
 import pandas as pd
-from src.reformat_time import reformatTime
-from src.get_lat_lon import getLatLon
+from reformat_time import reformatTime
+from get_lat_lon import getLatLon
 
 def pyDatPicture(usr_vars):
     """ 
@@ -105,6 +105,8 @@ def pyDatPicture(usr_vars):
         #Check for geographic data
         if GPSLat[idx] != "" or GPSLon[idx] != "":
             ddlat, ddlon = getLatLon(GPSLat[idx],GPSLon[idx],GPSLatRef[idx],GPSLonRef[idx])
+            if ddlat is None or ddlon is None:
+                continue
             dtime = reformatTime(DateTimeOriginal[idx])
         else:
             continue
@@ -115,8 +117,8 @@ def pyDatPicture(usr_vars):
                 continue
             
         #QC Check for device: If not on list of my devices then don't include.
-        if usr_vars['ONLY_MY_DEVICES'] == True:
-            if Model[idx] not in usr_vars['MY_DEVICES']:
+        if usr_vars['SELECT_DEVICES'] == True:
+            if Model[idx] not in usr_vars['DEVICES']:
                 continue
             
         # SAVE GOOD DATA

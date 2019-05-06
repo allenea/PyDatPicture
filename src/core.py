@@ -33,55 +33,40 @@ OUTPUT (CSV FILE):
     * Address -   OPTIONAL IN A LIMITED CAPACITY-Free (str) Reverse geocoded address (OR WITH PAID API)
 
 """
-#%% LOAD SOFTWARE
-def main():
-    from src.pDP_Setup import setup_pyDatPicture
-    import sys
+
+import sys
+import os
+import pyDatPicture as pyDat
+from map_it import map_data
+from reverse_geocode import reverse_geocode
+from detectOutliers import detectOutliers
+from get_image_data import getImageData
+
+
+def main(usr_vars):
     
-    isSetUp = setup_pyDatPicture()
-    
-    if isSetUp == False:
-        print("ERROR: THE REQUIRED SOFTWARE IS NOT INSTALLED ON YOUR MACHINE.\nFollow pyDatPicture documentation to proceed.")
-        sys.exit(0)
+    if usr_vars['EXTRACT_PHOTO_METADATA'] == True:
+        getImageData(usr_vars['INPUT_PIC_DIRECTORY'], usr_vars['RAW_METADATA_FILE'], recursive=usr_vars['DO_RECURSIVE']) 
     else:
-        import getpass
-        from USER_DEFINED_VARIABLES import user_variables
-        from src.print_run_info import print_info
-        import src.pyDatPicture as pyDat
-        from src.map_it import map_data
-        from src.reverse_geocode import reverse_geocode
-        from src.detectOutliers import detectOutliers
-        
-        
-    # Get Systems Info
-    USER_ID = getpass.getuser()
-    OS_SYSTEM = sys.platform
-    
-    # Get the user defined variables
-    usr_vars = user_variables()
-    
-    # Print User Defined Variables
-    print_info(usr_vars, isSetUp,USER_ID,OS_SYSTEM)
-    
+        if not os.path.exists(usr_vars['RAW_METADATA_FILE']):
+            print("RAW_METADATA_FILE: ",usr_vars['RAW_METADATA_FILE'],"\nCould not be found. Check and Try Again.")
+            sys.exit(0)
+        else:
+            pass
+
     # Process the data with quality control routines to give you a csv file with a list of time,longitude,latitude 
     data = pyDat.pyDatPicture(usr_vars)
 
-
     if usr_vars['DETECT_OUTLIARS'] == True:   
         ## USES LIMITED GEOCODING
-        QCd_data = detectOutliers(data,usr_vars,geo_fmt="degrees",percentile="99th")
+        QCd_data = detectOutliers(data,usr_vars,geo_fmt="degrees",percentile=usr_vars['PERCENTILE'])
         
     if usr_vars['REVERSE_GEOCODE'] == True:
         # LIMITED TO 100 GEOCODES... Use on specific and limited pictures 
-        
         reverse_geocode(usr_vars)
+        
     if usr_vars['MAPIT'] == True:
         # Python Mapping of Data
         map_data(QCd_data['Longitude'],QCd_data['Latitude'],usr_vars['PLOT_PATH'])
     
     print("\n\npyDatPicture Complete")
-    
-    
-# Execute main() function
-if __name__ == '__main__':
-    main()

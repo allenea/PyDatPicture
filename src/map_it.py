@@ -9,6 +9,10 @@ Sample script for mapping in cartopy.
 
 This is a world projection with your pictures plotted as red circles on the map.
 The figure is saved to your computer as set in USER_DEFINED_VARIABLES
+
+Added for most areas of the world. I spent like 2 minutes doing this,
+    so spend some time and make them artistic.
+    
 """
 
 #%% MAP:SAMPLE MAP
@@ -139,5 +143,5 @@ def map_data(longitude,latitude,plt_name):
 
     plt.savefig(os.path.join(plt_name, "Asia.jpeg"))
     plt.show()
-    plt.close()   
+    plt.close()
 

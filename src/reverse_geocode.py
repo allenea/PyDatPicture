@@ -13,42 +13,17 @@ Created on Sat May  4 14:21:41 2019
 ## FYI: Using Python most require payment, but Nominatim is free for the time being
 
 ## FYI: Using ArcGIS Pro account (much quicker and easier) it costs
-             40 credits per 1,000 geocodes and requires a Pro account. 
+             40 credits per 1,000 geocodes and requires a Pro account.  
 
 """
 # Reverse geocode to get location address --- NOT INCLUDED BUT HERE IS SOME STARTER CODE
 import pandas as pd
 import numpy as np
-import sys
+import geopy
+import geopy.geocoders
+from geopy.geocoders import Nominatim
 
 def reverse_geocode(usr_vars):
-    
-    if 'Anaconda' in sys.version:
-        import conda.cli
-        try:     
-            import geopy
-            import geopy.geocoders
-            from geopy.geocoders import Nominatim
-        except:
-            if 'geopy' in sys.modules:
-                import geopy.geocoders
-                from geopy.geocoders import Nominatim
-            else:
-                conda.cli.main('conda', 'install',  '-y', 'geopy')
-                try:
-                    import geopy.geocoders
-                    from geopy.geocoders import Nominatim
-                except:
-                    sys.exit(0)
-    else:
-        try:
-            import geopy
-            import geopy.geocoders
-            from geopy.geocoders import Nominatim
-        except:
-            if 'geopy' in sys.modules:  pass 
-            else:   print("GEOPY MODULE NOT INSTALLED")
-            sys.exit(0)
     
     geopy.geocoders.options.default_user_agent = 'my_app/1'
     geopy.geocoders.options.default_timeout = 100

@@ -23,21 +23,24 @@ def getLatLon(lat,lon,lat_ref, lon_ref):
         ddlat - (float) Decimal Degree Latitude 
         ddlon - (float) Decimal Degree Longitude 
     """
-    #Latitude
-    tmp1 = str(lat).split("deg")
-    latDeg = tmp1[0]
-    tmp2 = tmp1[1].split("'")
-    latMin = tmp2[0]
-    tmp3 = tmp2[1].split('"')
-    latSec = tmp3[0]
-    
-    #Longitude
-    tmp12 = str(lon).split("deg")
-    lonDeg = tmp12[0]
-    tmp22 = tmp12[1].split("'")
-    lonMin = tmp22[0]
-    tmp32 = tmp22[1].split('"')
-    lonSec = tmp32[0]
+    try:
+        #Latitude
+        tmp1 = str(lat).split("deg")
+        latDeg = tmp1[0]
+        tmp2 = tmp1[1].split("'")
+        latMin = tmp2[0]
+        tmp3 = tmp2[1].split('"')
+        latSec = tmp3[0]
+        
+        #Longitude
+        tmp12 = str(lon).split("deg")
+        lonDeg = tmp12[0]
+        tmp22 = tmp12[1].split("'")
+        lonMin = tmp22[0]
+        tmp32 = tmp22[1].split('"')
+        lonSec = tmp32[0]
+    except:
+        return None, None
     
     #Convert to Decimal Degrees
     ddlat = float(latDeg) + float(latMin) / 60.0 + float(latSec) / 3600.0

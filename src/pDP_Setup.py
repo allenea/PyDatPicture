@@ -5,6 +5,8 @@ Created on Sat May  4 00:09:32 2019
 
 @author: ericallen
 
+.....DEPRICATE ONCE ON CONDA.....
+
     The following code should take care of the python modules as long as you have downloaded/installed
     Anaconda (Python3) and EXIFTOOLS by Phil Harvey. Also a guide on how to install python through the source.
  
@@ -21,27 +23,37 @@ Created on Sat May  4 00:09:32 2019
         
     If you are using Anaconda this script should install any modules you haven't installed but need.
     If not it will tell you what you need to install and hopefully get you started.
+    
+    4. Install dateutil for Python (This should come preinstalled along with: os, sys, shutil, getpass.)
+        https://pypi.org/project/DateTime/  
         
-    4. Install Numpy for Python
+        
+    5. Install Numpy for Python
         https://scipy.org/install.html
         conda install -c anaconda numpy 
 
-    5. Install Pandas for Python
+    6. Install Pandas for Python
         https://pandas.pydata.org/pandas-docs/stable/install.html  (you may need some additional packages... see link)
         conda install -c anaconda pandas 
 
-    6. Install Cartopy for Python
+    7. Install Cartopy for Python
         https://scitools.org.uk/cartopy/docs/latest/installing.html
         conda install -c conda-forge cartopy
+    
+    8. Install Geopy for Python
+        https://geopy.readthedocs.io/en/stable/#installation
+        conda install -c conda-forge geopy 
 
-    7. Install Datetime for Python (This should come preinstalled along with: os, sys, shutil, getpass.)
-        https://pypi.org/project/DateTime/
 
 """
 def setup_pyDatPicture():
 
     try:
-        import getpass, os, sys,shutil,pathlib
+        import getpass
+        import os
+        import sys
+        import shutil
+        import pathlib
     except:
         print("One or more (typically) pre-installed python modules are not installed: getpass, os, sys, shutil")
         return False
@@ -55,34 +67,57 @@ def setup_pyDatPicture():
     if 'Anaconda' in sys.version:
         try:
             import conda.cli
-            import numpy, pandas, matplotlib.pyplot, cartopy, datetime
-
+            import numpy
+            import pandas
+            import matplotlib.pyplot
+            import cartopy
+            import datetime
+            import geopy
+            import geopy.geocoders
+            from geopy.geocoders import Nominatim
         except:        
             if 'numpy' in sys.modules:  pass 
-            else:   conda.cli.main('conda', 'install',  '-y', 'numpy');
+            else:   conda.cli.main('conda', 'install',  '-y',  '-c','anaconda', 'numpy');
             
             if 'pandas' in sys.modules:     pass
-            else:   conda.cli.main('conda', 'install',  '-y', 'pandas')
+            else:   conda.cli.main('conda', 'install',  '-y', '-c','conda-forge','pandas')
             
             if 'matplotlib' in sys.modules:    pass 
-            else:   conda.cli.main('conda', 'install',  '-y', 'matplotlib')
+            else:   conda.cli.main('conda', 'install',  '-y', '-c','conda-forge', 'matplotlib')
             
             if 'cartopy' in sys.modules:    pass
-            else:   conda.cli.main('conda', 'install',  '-y', 'cartopy')
+            else:   conda.cli.main('conda', 'install',  '-y', '-c','conda-forge','cartopy')
             
             if 'datetime' in sys.modules:    pass
-            else:   conda.cli.main('conda', 'install',  '-y', 'datetime') ## Not 100% sure this is right since this usually comes pre-installed.
+            else:   conda.cli.main('conda', 'install',  '-y',  '-c','anaconda', 'dateutil'); ## Not 100% sure this is right since this usually comes pre-installed.
+        
+            if 'geopy' in sys.modules:    pass
+            else:   conda.cli.main('conda', 'install',  '-y', '-c','conda-forge','geopy') ## Not 100% sure this is right since this usually comes pre-installed.
         
             # MAKE SURE THEY CAN BE IMPORTED AFTER THE INSTALL
             try:
-                import numpy, pandas, matplotlib.pyplot, cartopy, datetime
+                import numpy
+                import pandas
+                import matplotlib.pyplot
+                import cartopy
+                import datetime
+                import geopy
+                import geopy.geocoders
+                from geopy.geocoders import Nominatim
             except:
                 print("Could not import one or more of the modules - Anaconda.\nTry restarting Anaconda and re-run the program otherwise follow the documentation to download the necessary modules." )
                 return False
             
     else: # Not Anaconda environment
         try:
-            import numpy,pandas,matplotlib.pyplot,cartopy,datetime
+            import numpy
+            import pandas
+            import matplotlib.pyplot
+            import cartopy
+            import datetime
+            import geopy
+            import geopy.geocoders
+            from geopy.geocoders import Nominatim
         except:
             if 'numpy' in sys.modules:  pass 
             else:   print("NUMPY MODULE NOT INSTALLED")
@@ -97,7 +132,10 @@ def setup_pyDatPicture():
             else:   print("CARTOPY MODULE NOT INSTALLED")
             
             if 'datetime' in sys.modules:    pass
-            else:   print("DATETIME MODULE NOT INSTALLED")
+            else:   print("DATEUTIL/DATETIME MODULE NOT INSTALLED")
+            
+            if 'geopy' in sys.modules:    pass
+            else:   print("GEOPY MODULE NOT INSTALLED")
             return False
     
     
