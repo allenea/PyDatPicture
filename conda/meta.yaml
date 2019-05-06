@@ -1,10 +1,10 @@
 {% set version = "1.1.0" %}
 package:
-    name: pyDatPicture
+    name: PyDatPicture
     version: {{ version }}
 
 source:
-  url: https://github.com/allenea/pyDatPicture.zip  
+  git_url: https://github.com/allenea/PyDatPicture.git
   
 requirements:
     build:
@@ -25,21 +25,15 @@ requirements:
         - cartopy
         - geopy
 
-test:
-  imports:
-    - pyDatPicture
-  requires:
-    - pytest
-
 about:
-  home: https://github.com/allenea/pyDatPicture
+  home: https://github.com/allenea/PyDatPicture
   license: GNU General Public License v3.0
   summary: 'Getting geolocation from photos on your computer as usable data.'
   description: |
     Do you like to travel and take pictures? Now you can track where you've been using pyDatPicture.
     This module analyzes pictures/videos to identify geolocation data returning a list of times, latitude, and longitudes that can then be mapped in python or GIS.
-  dev_url: https://github.com/allenea/pyDatPicture
-  doc_url: https://github.com/allenea/pyDatPicture/blob/master/PyDatPicture.ipynb
-  doc_source_url: https://github.com/allenea/pyDatPicture/blob/master/README.md
+  dev_url: https://github.com/allenea/PyDatPicture
+  doc_url: https://github.com/allenea/PyDatPicture/blob/master/PyDatPicture.ipynb
+  doc_source_url: https://github.com/allenea/PyDatPicture/blob/master/README.md
   
   
