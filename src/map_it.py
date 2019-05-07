@@ -3,12 +3,15 @@
 """
 Created on Sat May  4 14:01:15 2019
 
-@author: ericallen
+@author: Eric Allen
+Last Modified: 7 May 2019 at 11:59AM
 
 Sample script for mapping in cartopy. 
 
 This is a world projection with your pictures plotted as red circles on the map.
-The figure is saved to your computer as set in USER_DEFINED_VARIABLES
+
+The figure is saved to your computer as set in:
+     USER_DEFINED_VARIABLES for PLOT_PATH
 
 Added for most areas of the world. I spent like 2 minutes doing this,
     so spend some time and make them artistic.
@@ -21,14 +24,15 @@ import cartopy.crs as ccrs
 import cartopy.feature as cfeature
 import os
 
-def map_data(longitude,latitude,plt_name):
+def map_data(longitude,latitude,usr_vars):
     
-    #%% WORLD
+    #%% Map the World
     fig = plt.figure()
     ax = fig.add_subplot(1, 1, 1, projection=ccrs.PlateCarree())
     
-    # TO ZOOM IN ON AN AREA
-    #ax.set_extent([WESTERN_LONGITUDE, EASTERN_LONGITUDE, SOUTHERN_LATITUDE, NORTHERN_LATITUDE], ccrs.PlateCarree())
+# TO ZOOM IN ON AN AREA
+#ax.set_extent([WESTERN_LONGITUDE, EASTERN_LONGITUDE, SOUTHERN_LATITUDE, NORTHERN_LATITUDE],\
+    #ccrs.PlateCarree())
 
     ax.plot(longitude, latitude, 'o', color='r', transform=ccrs.PlateCarree())
     
@@ -36,11 +40,11 @@ def map_data(longitude,latitude,plt_name):
     ax.coastlines()
     ax.add_feature(cfeature.BORDERS, linestyle=':')
 
-    plt.savefig(os.path.join(plt_name, "World.jpeg"))
+    plt.savefig(os.path.join(usr_vars['PLOT_PATH'], "World.jpeg"))
     plt.show()
     plt.close
     
-    #%% USA
+    #%% Map the United States
     fig = plt.figure()
     ax = fig.add_subplot(1, 1, 1, projection=ccrs.PlateCarree())
     
@@ -53,12 +57,12 @@ def map_data(longitude,latitude,plt_name):
     ax.coastlines()
     ax.add_feature(cfeature.STATES, linestyle=':')
 
-    plt.savefig(os.path.join(plt_name, "USA.jpeg"))
+    plt.savefig(os.path.join(usr_vars['PLOT_PATH'], "USA.jpeg"))
     plt.show()
     plt.close()
     
     
-    #%% EUROPE
+    #%% Map Europe
     fig = plt.figure()
     ax = fig.add_subplot(1, 1, 1, projection=ccrs.PlateCarree())
     
@@ -71,11 +75,11 @@ def map_data(longitude,latitude,plt_name):
     ax.coastlines()
     ax.add_feature(cfeature.BORDERS, linestyle=':')
 
-    plt.savefig(os.path.join(plt_name, "Europe.jpeg"))
+    plt.savefig(os.path.join(usr_vars['PLOT_PATH'], "Europe.jpeg"))
     plt.show()
     plt.close()
     
-    #%% AUSTRALIA
+    #%% Map Australia
     fig = plt.figure()
     ax = fig.add_subplot(1, 1, 1, projection=ccrs.PlateCarree())
     
@@ -88,12 +92,12 @@ def map_data(longitude,latitude,plt_name):
     ax.coastlines()
     ax.add_feature(cfeature.BORDERS, linestyle=':')
 
-    plt.savefig(os.path.join(plt_name, "Australia.jpeg"))
+    plt.savefig(os.path.join(usr_vars['PLOT_PATH'], "Australia.jpeg"))
     plt.show()
     plt.close()
     
     
-    #%% AFRICA
+    #%% Map Africa
     fig = plt.figure()
     ax = fig.add_subplot(1, 1, 1, projection=ccrs.PlateCarree())
     
@@ -105,11 +109,11 @@ def map_data(longitude,latitude,plt_name):
     ax.coastlines()
     ax.add_feature(cfeature.BORDERS, linestyle=':')
 
-    plt.savefig(os.path.join(plt_name, "Africa.jpeg"))
+    plt.savefig(os.path.join(usr_vars['PLOT_PATH'], "Africa.jpeg"))
     plt.show()
     plt.close()
     
-    #%% South America
+    #%% Map South America
     fig = plt.figure()
     ax = fig.add_subplot(1, 1, 1, projection=ccrs.PlateCarree())
     
@@ -122,13 +126,13 @@ def map_data(longitude,latitude,plt_name):
     ax.coastlines()
     ax.add_feature(cfeature.STATES, linestyle=':')
 
-    plt.savefig(os.path.join(plt_name, "SouthAmerica.jpeg"))
+    plt.savefig(os.path.join(usr_vars['PLOT_PATH'], "SouthAmerica.jpeg"))
     plt.show()
     plt.close()    
     
     
     
-    #%% Asia
+    #%% Map Asia
     fig = plt.figure()
     ax = fig.add_subplot(1, 1, 1, projection=ccrs.PlateCarree())
     
@@ -141,7 +145,7 @@ def map_data(longitude,latitude,plt_name):
     ax.coastlines()
     ax.add_feature(cfeature.BORDERS, linestyle=':')
 
-    plt.savefig(os.path.join(plt_name, "Asia.jpeg"))
+    plt.savefig(os.path.join(usr_vars['PLOT_PATH'], "Asia.jpeg"))
     plt.show()
     plt.close()
 

@@ -32,25 +32,36 @@ def set_user_vars():
 ###################### EDIT BETWEEN HERE TO CHANGE VARIABLES ##################
     
     #Default: True
-    #my_run.EXTRACT_PHOTO_METADATA = False
+    my_run.EXTRACT_PHOTO_METADATA = True
     
-    #Default: Pictures directory/folder for Windows and Mac users (/Users/username/Pictures/)
-    #my_run.INPUT_PIC_DIRECTORY = "/Users/"+getpass.getuser()+"/Documents/Pictures/"
+    #### Default: Pictures directory/folder for Windows and Mac users
+    ####          (/Users/username/Pictures/)
+    #my_run.INPUT_PIC_DIRECTORY = "/Users/"+getpass.getuser()+"/Desktop/TEST/"
     
     #Default: Where you run the code
     #my_run.OUTPUT_DIRECTORY = "/Users/"+getpass.getuser()+"/Desktop/"
-    my_run.OUTPUT_DIRECTORY = os.path.abspath("../Output") #ERIC'S
+    my_run.OUTPUT_DIRECTORY = os.path.abspath("../Output")
 
     #Default: "ImageMetadata_raw.csv"
-    #my_run.RAW_FILE = "newNameImageMetadataRaw.csv"
+    #my_run.RAW_FILE = "test_ImageMetadataRaw.csv"
+    
+    #Default: "ImageMetadata_geocode.csv"
+    #my_run.GEOCODE_FILE = "test_ImageMetadata_geocode.csv"
+    
+    #Default: "ImageMetadata_remove_outliers.csv"
+    #my_run.OUTLIARS_FILE = "test_ImageMetadata_remove_outliers.csv"
     
     #Default: "ImageMetadata_final.csv"
-    #my_run.POST_FILE = "ImageMetadata_out_newname.csv"
+    #my_run.POST_FILE = "test_ImageMetadata_final.csv"
 
     #Default: True
     #my_run.DETECT_OUTLIARS = False
 
-    #Default: "99th"
+    #### Default: "99th"
+    """
+    Preset Options = 1st, 2.5th, 5th, 10th, 25th, 50th, 75th, 90th, 95th, 
+                    97.5th, 99th
+    """
     #my_run.PERCENTILE = "95th"
     
     #Default: True
@@ -67,28 +78,48 @@ def set_user_vars():
     
     #Default: True
     #my_run.MAPIT = False
+    
+    #Default: False
+    #my_run.MY_MAP = True
+    
+    #Default: ImageMetadata_final.csv
+    #my_run.MAP_DATA_FILE = "ImageMetadata_final.csv"
+    
+    #Default: OUTPUT_DIRECTORY/Data/ Path
+    #my_run.MAP_DATA_PATH = "/Users/"+getpass.getuser()+"/Documents/GitHub/PyDatPicture/output/Data/"
 
+    #Default: The main PyDatPicture directory where the sample script is kept
+    #my_run.MAPPING_PROGRAM = os.path.abspath("../")
+
+    #Default: OUTPUT_DIRECTORY +'/Figures/'
+    my_run.PLOT_PATH = os.path.join(my_run.OUTPUT_DIRECTORY,"Figures")
+    
     #Default: False
     #my_run.REVERSE_GEOCODE = True
     
-    ## INCLUDE THESE IF YOU CHANG THE OUTPUT_DIRECTORY
+    ## INCLUDE THESE IF YOU CHANGE THE OUTPUT_DIRECTORY
     
     #Default: OUTPUT_DIRECTORY +'/Data/'+ POST_FILE
     my_run.PROCESSED_DATA = os.path.join(my_run.OUTPUT_DIRECTORY,"Data")
     
     #Default: OUTPUT_DIRECTORY +'/Data/'+ RAW_FILE
-    my_run.RAW_METADATA_FILE = os.path.join(my_run.PROCESSED_DATA, my_run.RAW_FILE)
+    my_run.RAW_METADATA_FILE = os.path.join(my_run.PROCESSED_DATA,\
+                                            my_run.RAW_FILE)
 
+    my_run.GEOCODE_METADATA_FILE = os.path.join(my_run.PROCESSED_DATA,\
+                                                my_run.GEOCODE_FILE)
+
+    #Default: OUTPUT_DIRECTORY +'/Data/'+ OUTLIARS_FILE
+    my_run.OUTLIAR_QC_METADATA_FILE = os.path.join(my_run.PROCESSED_DATA,\
+                                                   my_run.OUTLIARS_FILE)
 
     #Default: POST_PROCESSED_DATA +'/Data/'+ POST_FILE
-    my_run.POST_PROCESSED_DATA = os.path.join(my_run.PROCESSED_DATA,my_run.POST_FILE)
+    my_run.POST_PROCESSED_DATA = os.path.join(my_run.PROCESSED_DATA,\
+                                              my_run.POST_FILE)
                                             
-                                            
-    #Default: OUTPUT_DIRECTORY +'/Figures/'
-    my_run.PLOT_PATH = os.path.join(my_run.OUTPUT_DIRECTORY,"Figures")
-    
-    
 ###############################################################################
+    
+    
     #FINAL VARIABLES
     myvars = my_run.status_variables()
 
@@ -100,12 +131,12 @@ def set_user_vars():
 if __name__ == '__main__':
     
     from pDP_Setup import setup_pyDatPicture
-
     
     isSetUp = setup_pyDatPicture()
     
     if isSetUp == False:
-        print("ERROR: THE REQUIRED SOFTWARE IS NOT INSTALLED ON YOUR MACHINE.\nFollow pyDatPicture documentation to proceed.")
+        print("ERROR: THE REQUIRED SOFTWARE IS NOT INSTALLED ON YOUR MACHINE.",\
+              "\nFollow PyDatPicture documentation to proceed.")
         sys.exit(0)
     else:
         myvars = set_user_vars()

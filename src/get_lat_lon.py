@@ -3,15 +3,17 @@
 """
 Created on Sat May  4 00:38:19 2019
 
-@author: ericallen
+@author: Eric Allen
+Last Modified: 7 May 2019 at 11:58AM
 
 parses the lat/lon information to covert from DMS to DD adjusted for reference.
 """
 
 def getLatLon(lat,lon,lat_ref, lon_ref):
     """
-    Takes the string for latitude and longitude. Parses it to extract the necessary elements to
-    calculate decimal degrees. Then applies the reference variable.
+    Takes the string for latitude and longitude. 
+    Parses it to extract the necessary elements to calculate in decimal degrees.
+    Then applies the reference variable.
     
     INPUT (SINGLE VALUE)
         lat - (str) Latitude

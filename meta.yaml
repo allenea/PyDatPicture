@@ -1,4 +1,4 @@
-{% set version = "1.1.1" %}
+{% set version = "1.1.01" %}
 package:
     name: pydatpicture
     version: {{ version }}
@@ -10,7 +10,7 @@ source:
 requirements:
     build:
         - python 3.*
-        - numpy
+        - numpy >=1.11.*
         - scipy
         - dateutil
         - matplotlib
@@ -22,7 +22,7 @@ requirements:
 
     run:
         - python 3.*
-        - numpy
+        - numpy >=1.11.*
         - scipy
         - dateutil
         - matplotlib
@@ -33,11 +33,11 @@ test:
   imports:
     - PyDatPicture
   requires:
-    - pytest tests test_pkg_integration.py
-  source_files:
-    - tests
-    - test_all.py
-    
+    - pytest
+  commands:
+    - cd tests
+    - pytest -q -rs test_all.py
+     
 about:
   home: https://github.com/allenea/PyDatPicture
   license: GNU General Public License v3.0

@@ -3,10 +3,10 @@
 """
 Created on Sat May  4 00:38:17 2019
 
-@author: ericallen
+@author: Eric Allen
+Last Modified: 7 May 2019 at 11:56AM
 
-Reformats the date and time
-
+Reformats the date and time specified below.
 """
 import datetime as dt
 import re
@@ -19,9 +19,9 @@ def reformatTime(date_time):
     future format changes using the most traditional formats.
     
     INPUT
-       date_time - (str) as formatted from the metadata
+        date_time - (str) as formatted from the metadata
      OUPUT
-         fmtTime - (str) reformatted string with date/time info
+        fmtTime - (str) reformatted string with date/time info
     """
     # Process Time: Not critical but I like the more traditional Format
     if date_time  != "":
@@ -31,7 +31,10 @@ def reformatTime(date_time):
             d_lst  = regx.split(date_time)
             if len(d_lst) == 5:
                 d_lst.append(sec)
-            dt_tuple = dt.datetime(int(d_lst[0]),int(d_lst[1]),int(d_lst[2]),int(d_lst[3]),int(d_lst[4]),int(d_lst[5]))
+                
+            dt_tuple = dt.datetime(int(d_lst[0]),int(d_lst[1]),int(d_lst[2]),\
+                                   int(d_lst[3]),int(d_lst[4]),int(d_lst[5]))
+            
             return dt_tuple.strftime("%Y-%m-%d %H:%M:%S")
         except:
             print("INVALID TIME")

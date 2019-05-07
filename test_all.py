@@ -5,8 +5,10 @@ Created on Mon May  6 11:46:22 2019
 
 @author: ericallen
 
+@author: Eric Allen
+Last Modified: 7 May 2019 at 12:10PM
 
-TESTS THE FOLLOWING FUNCTIONS
+TESTS THE FOLLOWING FUNCTIONS FOR PyDatPicture
 
 src.lib.detectOutliers
     user_response
@@ -22,6 +24,7 @@ src.lib.get_lat_lon
     
 pytest -q -rs test_all.py
 """
+
 import pytest
 import sys
 import os

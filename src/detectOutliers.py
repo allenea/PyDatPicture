@@ -3,13 +3,17 @@
 """
 Created on Sat May  4 21:00:52 2019
 
-@author: ericallen
+@author: Eric Allen
+Last Modified: 7 May 2019 at 11:56AM
 
-Modified my data_randomness that I wrote in Spatial Stats  to eliminate "random" points or outliers
-that are likely not places I've been. I typically take more than one picture if I am at some new cool place.
+Modified my data_randomness program that I wrote in Spatial Stats for research
+to eliminate "random" points or outliers that are likely not places I've been.
 
-Returns csv file without the "random points" - allows the user to control what outliers are included.
-- For example I've been to Newport News,VA and Niagara Falls but they were considered outliars. I've never been to China.
+Returns csv file without the "random points" - allows the user to control what
+outliers are included.
+
+- For example I've been to Newport News,VA and Niagara Falls
+    but they were considered outliars. I've never been to China - remove.
 """
 
 import numpy as np
@@ -19,29 +23,33 @@ import geopy
 import geopy.geocoders
 from geopy.geocoders import Nominatim
 
-def detectOutliers(data,usr_vars,geo_fmt="degrees", percentile="95th"):
-    
+def detectOutliers(data,usr_vars,geo_fmt="degrees", percentile="99th"):
+    #Data
     Longitude = list(data['Longitude'])
     Latitude = list(data['Latitude'])
     Date_Time = list(data['Date_Time'])
     
-    final_qc_file = str(usr_vars['POST_PROCESSED_DATA']).replace(".csv","_remove_outliers.csv")
+    #output file
+    final_qc_file = usr_vars['OUTLIAR_QC_METADATA_FILE']
     
+    #Setup geocoder
     geopy.geocoders.options.default_user_agent = 'my_app/1'
     geopy.geocoders.options.default_timeout = 100
     geolocator = Nominatim()
         
+    #reverse geocode function that will be called
     def reverse_geocode(Latitude,Longitude):
-
         latlonstr = str(Latitude)+" , "+str(Longitude)
         Address, (lats, longs) = geolocator.reverse(latlonstr)   
         return Address        
     
     n = len(Latitude)
     d_list = []
-    nearestNeighbor = []
     
-    for k in range(n):   ## range looping is new here
+    nearestNeighbor = []
+    #Loop through the data to calculate the distances for all points.
+    #Keep only the nearest neighbor (min) for each in k loop
+    for k in range(n):
         if geo_fmt == "dms":
             ltdeg =float(Latitude[k].split(".")[0])
             ltmin = float(Latitude[k].split(".")[1])
@@ -56,7 +64,8 @@ def detectOutliers(data,usr_vars,geo_fmt="degrees", percentile="95th"):
             ddlong = Longitude[k]
             ddlat = Latitude[k]
     
-    
+        #Calculate the distance for all points at each point. keep all distances
+        # in stDistance for that point to then identify the minimum
         stDistance=[]
         for j in range(n):
             if k != j:
@@ -78,13 +87,16 @@ def detectOutliers(data,usr_vars,geo_fmt="degrees", percentile="95th"):
                 d = haversine(ddlong, ddlat, ddlong2, ddlat2)
                 
                 #Law of Cosine
-                #d = acos(((sin(rlat)*sin(rlat2))+(cos(rlat)*cos(rlat2)*cos(rlong-rlong2))))
+                #d = acos(((sin(rlat)*sin(rlat2))+(cos(rlat)*cos(rlat2)*\
+                        # cos(rlong-rlong2))))
                 
                 stDistance.append(d)
                 d_list.append(d) #distance list
-            
+                
+        #Find Nearest for that point
         nearestNeighbor.append(min(stDistance))
-        
+    
+    #Calculate stats on the dataset   
     Mean = np.mean(d_list)
     MeanNearest = np.mean(nearestNeighbor)
     StandardDeviation = np.std(d_list)
@@ -100,18 +112,21 @@ def detectOutliers(data,usr_vars,geo_fmt="degrees", percentile="95th"):
     print("Standard Deviation Nearest Neightbor:  %10.3f"%STDNearest)
     print()
     
+    #Get out of range value to identify outliars
     OUT_OF_RANGE = get_out_of_range_value(percentile,MeanNearest,STDNearest)
     
-    
+    #Print Info to Console
     print("USING PERCENTILE: ", percentile)
     print("OUT OF RANGE VALUE: ", OUT_OF_RANGE)
     
     outHEADER = ["Date_Time", "Longitude", "Latitude"]
 
+    #Figure out what to keep and what to QC
     OUT_DATA = np.zeros((len(Latitude),len(outHEADER)), dtype = object)
     count = 0
     for idx in range(len(nearestNeighbor)):
         if nearestNeighbor[idx] >= OUT_OF_RANGE:
+            #Out of range: Get Users Feedback to Confirm
             print()
             address = reverse_geocode(Latitude[idx],Longitude[idx])
             print(address)
@@ -126,7 +141,7 @@ def detectOutliers(data,usr_vars,geo_fmt="degrees", percentile="95th"):
                 OUT_DATA[count,2] = Latitude[idx]
                 count +=1
             else:
-                print("INVALID REPONSE.... Continuing....")
+                print("INVALID RESPONSE.... Continuing....")
         else:
             # SAVE GOOD DATA
             OUT_DATA[count,0] = Date_Time[idx]
@@ -137,15 +152,16 @@ def detectOutliers(data,usr_vars,geo_fmt="degrees", percentile="95th"):
     
     #Trim down to the size actually used      
     OUT_DATA = OUT_DATA[:count,:]
-    print("Number of Unique Pictures with geolocation after QC: ", count)
+    print("Number of Unique Pictures with Geolocation after QC: ", count)
     df = pd.DataFrame(OUT_DATA,columns=outHEADER)
     df.to_csv(final_qc_file,index=False)
     return df
 
-
+############ FUNCTIONS CALLED BY detectOutlairs ###############################
 
 def get_response():
-    response = str(input("Are you sure you want to remove the location above from your final picture dataset: (yes) or (no)\n"))
+    response = str(input("Are you sure you want to remove the location above"+\
+                         " from your final picture dataset: (yes) or (no)\n"))
     return response
     
 def user_response(response):
@@ -172,8 +188,7 @@ def haversine(lon1, lat1, lon2, lat2):
     
     return distance in kilometers
     """
-    # PUT IT IN RADIANS -- originally was passing radians... but this is easier to test for... since they weren't
-    # passing the tests and in the comments I said I was passing decimal degrees. I wasn't.. Now I am and it's fixed.
+    # PUT IT IN RADIANS -- originally was passing radians but this is easier.     
     lon1, lat1, lon2, lat2 = map(radians, (lon1, lat1, lon2, lat2))
     
     # haversine formula 
@@ -184,17 +199,26 @@ def haversine(lon1, lat1, lon2, lat2):
     
     c =asin(sqrt(a)) 
     
-    r = 6371.  #* 1000 # Radius of earth in kilometers. multiply by 1000 for meters. Use 3956 for miles
+    #Radius of Earth in kilometers. Multiply by 1000 for meters. 3956 for miles
+    r = 6371. 
     
     return 2 * c * r
 
 
 def get_percentile_value(percentile):
     """Options Below"""
-    percentile_z_key = {"1st":-2.326, "2.5th":-1.960, "5th":-1.645, "10th":-1.282, "25th":-0.675, "50th":0,\
-                        "75th":0.675, "90th":1.282, "95th":1.645, "97.5th":1.960, "99th":2.326}
-    
-    return percentile_z_key[percentile]
+    percentile_z_key = {"1st":-2.326, "2.5th":-1.960, "5th":-1.645,\
+                        "10th":-1.282, "25th":-0.675, "50th":0,\
+                        "75th":0.675, "90th":1.282, "95th":1.645,\
+                        "97.5th":1.960, "99th":2.326}
+    try:
+        value = percentile_z_key[percentile]
+    except:
+        print("Invalid Percentile Option: Using Default of 99th percentile.\n",\
+              "Continuing....")
+        value = percentile_z_key["99th"]
+        
+    return value
 
 def get_out_of_range_value(percentile,MeanNearest,STDNearest):
     return MeanNearest + get_percentile_value(percentile)*(STDNearest) 
