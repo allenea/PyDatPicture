@@ -401,6 +401,9 @@ If you are using anaconda, then there is a chance, fingers crossed, that any req
 # 4. MAPPING
 
 ## 4.1 MAPPING IN GIS
+
+Requires you to have your final output file that you want to map.
+
 <COMING SOON... A Step-By-Step Guide...>
 
 
