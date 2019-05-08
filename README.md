@@ -418,7 +418,7 @@ If you are using anaconda, then there is a chance, fingers crossed, that any req
         or speed greater than 75 km/hr and altitude above 1000m) or by
         the DEVICE that was used to take the picture, if SELECT_DEVICES is
         turned on. These can be set in the run_me file. 
-        The Date, Time, Latitude, and Longitude is
+        The Date-Time, Latitude, and Longitude is
         corrected for the reference (N/S, E/W) and saved as
         a numerical values. Date/Time is reformatted. Numerical Data.
         
@@ -476,7 +476,7 @@ Requires you to have your final output file that you want to map.
 
 To map your data in python turn MAP_IT on (True).
 
-Mapping in python is a good alternative if you do not have access to GIS software like ArcGIS Pro. Cartopy is an amazing library that can make it happen. I've made some very nice maps back in my day with cartopy (haha still make them all the time). Cartopy allows you to add features like boarders, states, coastlines (at high or low resolution), and map data on top of the map.Cartopy supports many projections to map your data how you want. Just apply that projection while plotting your data (using transform = projection). See map_it.py for a template of how to map and zoom with set_extent. You can change the dot size, color, and shape for the geographic locations that photos are taken. Search for Cartopy documentation for more details of how to map with cartopy. 
+Mapping in python is a good alternative if you do not have access to GIS software like ArcGIS Pro. Cartopy is an amazing library that can make it happen. Cartopy allows you to add features like boarders, states, coastlines (at high or low resolution), and map data on top of the map.Cartopy supports many projections to map your data how you want. Just apply that projection while plotting your data (using transform = projection). See map_it.py for a template of how to map and zoom with set_extent. You can change the dot size, color, and shape for the geographic locations that photos are taken. Search for Cartopy documentation for more details of how to map with cartopy. 
 
 Use the PLOT_PATH to direct PyDatPicture where it should save your figure files. By default it's in the ./Output/Figure/ PATH.
 
