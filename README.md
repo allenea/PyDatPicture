@@ -1,10 +1,10 @@
 # pyDatPicture
 By Eric Allen
-Last Modified: 5 May 2019 at 2:00AM EDT
+Last Modified: 8 May 2019 at 2:00AM EDT
 
 # 1. Overview
 ## Travel Much? Use your pictures to figure out where you've been.
-This is a python program written to extract metadata from images on your computer and process that data into a csv file with time, latitude, and longitude. The output can be mapped in GIS or Python. When you are traveling this is the best way to map your hyper-local movement. Your social media data provides little insight compared to your photos and videos.
+This is a python program written to extract geolocation metadata from the media files (images, videos, and audio) on your computer and process that data into a csv file with time, latitude, and longitude. The output can be mapped in GIS or Python. When you are traveling this is the best way to map and track your hyper-local movements. Your social media data provides little insight compared to your photos and videos.
 
 This program was written with the intention of having the user program as little as possible. The only "code" the user should have to touch is the "main" file. There the user can change any of the default settings. In most cases that requires removing the #. Other cases will require you to add a file name or file path with " " on each side, to the right of the = sign. The output is very verbose so you can follow what is going on to identify where things are getting saved or where a problem might be occuring. The goal is to have you download the software and just run it.
 
@@ -13,7 +13,8 @@ This program was written with the intention of having the user program as little
 
 ## 2.1 Required Software
 - EXIFTOOLS (REQUIRED: Phil Harvey: <https://sno.phy.queensu.ca/~phil/exiftool/>)
-- Python 3 (REQUIRED: I HIGHLY RECOMMEND: <Anaconda https://www.anaconda.com/distribution/#download-section>)
+- Python 3 (REQUIRED: I HIGHLY RECOMMEND: Anaconda https://www.anaconda.com/distribution/#download-section)
+
 	**WITH THE FOLLOWING PYTHON MODULES:**
 	
 	**Windows Users:** Use the Windows Anaconda Prompt and enter the code below to install the modules on Anaconda.
