@@ -100,8 +100,8 @@ class USER_DEFINED_VARIABLES(object):
         self.GEOCODE_METADATA_FILE = os.path.join(self.PROCESSED_DATA,\
                                                   self.GEOCODE_FILE)
 
-        self.OUTLIAR_QC_METADATA_FILE = os.path.join(self.PROCESSED_DATA,\
-                                                     self.OUTLIARS_FILE)
+        self.OUTLIER_QC_METADATA_FILE = os.path.join(self.PROCESSED_DATA,\
+                                                     self.OUTLIERS_FILE)
 
         self.POST_PROCESSED_DATA = os.path.join(self.PROCESSED_DATA,\
                                                 self.POST_FILE)
@@ -117,7 +117,7 @@ class USER_DEFINED_VARIABLES(object):
                'SELECT_DEVICES':self.SELECT_DEVICES,'DEVICES':self.DEVICES,\
                'REVERSE_GEOCODE':self.REVERSE_GEOCODE,\
                'DO_RECURSIVE':self.DO_RECURSIVE,\
-               'DETECT_OUTLIARS':self.DETECT_OUTLIARS,\
+               'DETECT_OUTLIERS':self.DETECT_OUTLIERS,\
                'PERCENTILE':self.PERCENTILE,\
                'PROCESSED_DATA':self.PROCESSED_DATA,\
                'OUTPUT_DIRECTORY':self.OUTPUT_DIRECTORY,\

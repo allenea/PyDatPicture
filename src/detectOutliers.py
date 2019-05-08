@@ -157,7 +157,7 @@ def detectOutliers(data,usr_vars,geo_fmt="degrees", percentile="99th"):
     df.to_csv(final_qc_file,index=False)
     return df
 
-############ FUNCTIONS CALLED BY detectOutlairs ###############################
+############ FUNCTIONS CALLED BY detectOutliers ###############################
 
 def get_response():
     response = str(input("Are you sure you want to remove the location above"+\
