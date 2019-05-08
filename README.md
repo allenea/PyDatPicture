@@ -45,7 +45,7 @@ If you are using anaconda, then there is a chance (fingers crossed) that any req
 **The user only needs to modify the main.py file, as needed. More often than not the default settings will not need to be changed.**
 
   
-###### EXTRACT_PHOTO_METADATA
+##### EXTRACT_PHOTO_METADATA
 Default: True   -> Get Data
 Alternative: False -> Use an existing datafile created by PyDatPicture
 """
