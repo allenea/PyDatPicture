@@ -503,4 +503,4 @@ Please acknowledge Eric Allen and PyDatPicture in any work that is not for perso
 
 **“Travel makes one modest. You see what a tiny place you occupy in the world.” -Gustav Flaubert**
 
-**#LiveLoveLaughTravel - Kyri**
+**#LiveLoveLaughTravel - Kyri (tour guide w/ #EF)**
