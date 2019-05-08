@@ -325,11 +325,12 @@ If you are using anaconda, then there is a chance, fingers crossed, that any req
 	
 	
 	
-## 3.2 Output Files:
+## 3.2 Output Files & Figures:
+
 
 #### VARIABLES
 
-- Date_Time - (str) YYYY-mm-dd HH:MM:SS (Depends on device time at photo)
+- Date_Time - (str) YYYY-mm-dd HH:MM:SS (Depends on device time at photo. Time zone not recorded.)
 
 - Latitude - (float) Decimal Degrees (Negative values are South)
 
@@ -337,8 +338,11 @@ If you are using anaconda, then there is a chance, fingers crossed, that any req
 
 * Address -   OPTIONAL IN A LIMITED CAPACITY (str)
 
-	- Reverse geocoded address (OR WITH PAID API)
-                    
+	- Reverse geocoding addresses with PAID API will require a few modifications.
+            
+	    
+	    
+#### FILES
                     
 1. RAW_METADATA_FILE 
     - What is extracted from your photos by EXIFTOOLS. Text Data.
@@ -381,6 +385,8 @@ If you are using anaconda, then there is a chance, fingers crossed, that any req
 
 ** These 4 files are returned as CSV files with a header row including the
     following headers  **
+    
+#### FIGURES
 
 5. Output/Figures/
     - This folder includes figures created with either the template mapping
@@ -390,3 +396,28 @@ If you are using anaconda, then there is a chance, fingers crossed, that any req
         mapping routines(code) saved. These are not set by default
         and must be done in the main.py by changing the class variable
         value, from where you are running the code.
+
+
+# MAPPING
+## MAPPING IN GIS
+<COMING SOON... A Step-By-Step Guide...>
+
+
+## MAPPING IN PYTHON
+
+To map your data in python turn MAP_IT on (True).
+
+Mapping in python is a good alternative if you do not have access to GIS software like ArcGIS Pro. Cartopy is an amazing library that can make it happen. I've made some very nice maps back in my day with cartopy (haha still make them all the time). Cartopy allows you to add features like boarders, states, coastlines (at high or low resolution), and map data on top of the map.Cartopy supports many projections to map your data how you want. Just apply that projection while plotting your data (using transform = projection). See map_it.py for a template of how to map and zoom with set_extent. You can change the dot size, color, and shape for the geographic locations that photos are taken. Search for Cartopy documentation for more details of how to map with cartopy. 
+
+Use the PLOT_PATH to direct PyDatPicture where it should save your figure files. By default it's in the ./Output/Figure/ PATH.
+
+#### MAPIT.py
+	> map_data(longitude,latitude,usr_vars)
+This is the default mapping program that I wrote in like two minutes covering what I believe are the major travel areas of the world. Obviously I am missing many regions. You can add them to this file or adjust these as you wish. This file takes in longitude, latitude, and the dictionary usr_vars.
+
+## my_pyDatPicture_mapping.py
+	> map_data(usr_vars)
+This is a file where you can create your own map with ANY PyDatPicture output file that contains latitude and longitude. This template was written so that you don't have to touch any of the src code. You need to switch MY_MAP to True and then you have the freedom to use the default data and just contribute your own mapping algorithm, and you can pass any PyDatPicture data output (new or old) just set the file name with MAP_DATA_FILE and then set the path to that file with MAP_DATA_PATH. DO NOT change the name of the my_pyDatPicture_mapping.py file or the function call. 
+
+There should only be two files you need to touch. 
+
