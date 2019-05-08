@@ -254,7 +254,10 @@ If you are using anaconda, then there is a chance, fingers crossed, that any req
 
 
 
+
 **INCLUDE THESE IF YOU CHANGED THE OUTPUT_DIRECTORY**
+
+
 
 
 
@@ -303,12 +306,17 @@ If you are using anaconda, then there is a chance, fingers crossed, that any req
 
 ## 3.1 PyDatPicture Code
 
+
+- **pyDatPicture/run_me/**
+
     - **main.py** is the main program that is actually executed. This file contains the user variables which the user can change if they do not want to use the default values.
+    
     - **my_pyDatPicture_mapping.py** User modifiable custom-mapping routine
 
 
-- **pyDatPicture/src**
-    - **core.py** Is the core of the PyDatPicture algorithm. It helps facilitate everything.
+- **pyDatPicture/src/**
+
+    - **core.py** Is the core of the PyDatPicture algorithm that "turns the crank" on PyDatPicture. It helps facilitate everything.
     
     - **detectOutlier.py** Is a statistical analysis feature that identifies potential outliers and requests feedback from the user as to whether or not to include the data in the final output.
     
@@ -334,12 +342,14 @@ If you are using anaconda, then there is a chance, fingers crossed, that any req
     
     - **__init__.py** is required to make Python treat directories containing the file as packages
 
-- **pyDatPicture/Documentation**
+- **pyDatPicture/Documentation/**
+
 	- **WGET_README.md** is the README file for the wget program that was used.
 
-	- **pyDatPicture/Documentation/Sample_Figures**
-		- **testplot_pictures.JPG** is the sample cartopy world view figure
+	- **/Sample_Figures/**
 	
+		- **testplot_pictures.JPG** is the sample cartopy world view figure
+		
 		- **Europe_Sample.JPG** is the European view ArcGIS Pro created figure
 	
 		- **sample1.JPG** is a quick 6-pannel city view ArcGIS Pro created figure
@@ -363,17 +373,14 @@ If you are using anaconda, then there is a chance, fingers crossed, that any req
 		- **World.jpeg** is a world view, sample template, of cartopys mapping capabilities.
 
 
-- **conda_build**
-	- **meta.yaml** is NOT working, but a script to eventually build as an conda package.
+- **pyDatPicture/conda_build/**
+	- **meta.yaml** is NOT working, but a script to eventually build as an conda package. You don't need to do anything with this.
 
+- **pyDatPicture/Output/**
+	- **/Data/**  Comes empty but will hold the output data by default
+	- **/Figures/**  Comes empty but will hold the output figures by default
 
-- **Output**
-	- **Output/Data/**  Comes empty, but will hold the output data by default
-	- **Output/Figures/**  Comes empty, but will hold the output figures by default
-
-
-
-- **tests/**
+- **pyDatPicture/tests/**
 	- **test_all.py** Contains tests to make sure that the program is working as it should
 
 - **README.md** Contains documentation and instructions for PyDatPicture
@@ -382,9 +389,7 @@ If you are using anaconda, then there is a chance, fingers crossed, that any req
 	
 	
 
-	
-	
-	
+
 ## 3.2 Output Files & Figures:
 
 
@@ -425,8 +430,7 @@ If you are using anaconda, then there is a chance, fingers crossed, that any req
          and run this program on that set of data. The API will
          kick you off with too many calls. I can't control that.
          Numerical Data.
-        * Not to exceed 100 coordinates without modifying the
-         code, should only be done if you have a paid API...
+        * Not to exceed 100 coordinates without modifying the code, should only be done if you have a paid API...
 
 4. OUTLIER_QC_METADATA_FILE
     - This is a really neat feature that uses spatial
