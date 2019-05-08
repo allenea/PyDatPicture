@@ -425,3 +425,11 @@ This is a file where you can create your own map with ANY PyDatPicture output fi
 
 There should only be two files you need to touch. 
 
+
+# ACKNOWLEDGEMENTS
+
+Please acknowledge Eric Allen and PyDatPicture in any work that is not for personal use. Not bad for a meteorologist who coded this in about a week and a half, eh? Two weeks start to finish since I had the idea of mapping my travels in GIS. Spread the word about this program. Use #PyDatPicture in any social media posts where you are sharing maps of your travels.
+
+**“Travel makes one modest. You see what a tiny place you occupy in the world.” -Gustav Flaubert**
+
+**#LiveLoveLaughTravel - Kyri**
