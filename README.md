@@ -328,7 +328,7 @@ If you are using anaconda, then there is a chance, fingers crossed, that any req
 ## 3.2 Output Files & Figures:
 
 
-#### VARIABLES
+#### 3.2.1 VARIABLES
 
 - Date_Time - (str) YYYY-mm-dd HH:MM:SS (Depends on device time at photo. Time zone not recorded.)
 
@@ -342,7 +342,7 @@ If you are using anaconda, then there is a chance, fingers crossed, that any req
             
 	    
 	    
-#### FILES
+#### 3.2.2 FILES
                     
 1. RAW_METADATA_FILE 
     - What is extracted from your photos by EXIFTOOLS. Text Data.
@@ -383,10 +383,10 @@ If you are using anaconda, then there is a chance, fingers crossed, that any req
         What happens here does not impact any of the other 
         results.
 
-** These 4 files are returned as CSV files with a header row including the
-    following headers  **
+**These 4 files are returned as CSV files with a header row including the
+    following headers**
     
-#### FIGURES
+#### 3.2.3 FIGURES
 
 5. Output/Figures/
     - This folder includes figures created with either the template mapping
@@ -398,13 +398,13 @@ If you are using anaconda, then there is a chance, fingers crossed, that any req
         value, from where you are running the code.
 
 
-# MAPPING
+# 4. MAPPING
 
-## MAPPING IN GIS
+## 4.1 MAPPING IN GIS
 <COMING SOON... A Step-By-Step Guide...>
 
 
-## MAPPING IN PYTHON
+## 4.2 MAPPING IN PYTHON
 
 To map your data in python turn MAP_IT on (True).
 
@@ -412,11 +412,11 @@ Mapping in python is a good alternative if you do not have access to GIS softwar
 
 Use the PLOT_PATH to direct PyDatPicture where it should save your figure files. By default it's in the ./Output/Figure/ PATH.
 
-#### MAPIT.py
+#### 4.2.1 MAPIT.py
 	> map_data(longitude,latitude,usr_vars)
 This is the default mapping program that I wrote in like two minutes covering what I believe are the major travel areas of the world. Obviously I am missing many regions. You can add them to this file or adjust these as you wish. This file takes in longitude, latitude, and the dictionary usr_vars.
 
-#### my_pyDatPicture_mapping.py
+#### 4.2.2 my_pyDatPicture_mapping.py
 	> map_data(usr_vars)
 This is a file where you can create your own map with ANY PyDatPicture output file that contains latitude and longitude. This template was written so that you don't have to touch any of the src code. You need to switch MY_MAP to True and then you have the freedom to use the default data and just contribute your own mapping algorithm, and you can pass any PyDatPicture data output (new or old) just set the file name with MAP_DATA_FILE and then set the path to that file with MAP_DATA_PATH. DO NOT change the name of the my_pyDatPicture_mapping.py file or the function call. 
 
