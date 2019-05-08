@@ -4,15 +4,16 @@ Last Modified: 8 May 2019 at 2:00AM EDT
 
 # 1. Overview
 ## Travel Much? Use your pictures to figure out where you've been.
-This is a python program written to extract geolocation metadata from the media files (images, videos, and audio) on your computer and process that data into a csv file with time, latitude, and longitude. The output can be mapped in GIS or Python. When you are traveling this is the best way to map and track your hyper-local movements. I originally thought that social media data might provide the most insight, but truth is that is contributes little insight compared to your photos and videos.
+This is a python program written to extract geolocation metadata from the media files (image, video, and audio) on your computer and process that data into a csv (comma-separated) file with time, latitude, and longitude. The output can be mapped in GIS or Python. When you are traveling this is the best way to map and track your hyper-local movements. I originally thought that social media data might provide the most insight, but truth is that is contributes little insight compared to your photos and videos. By default, social media strips your photos of geolocation data when you post them.
 
-This program was written with the intention of having the user program as little as possible. The only "code" the user should have to touch is the "main" file and the my_pyDatPicture_mapping.py. There the user can change any of the default settings. In most cases that requires removing the #. Other cases will require you to add a file name or file path with " " on each side, to the right of the = sign. The output is very verbose so you can follow what is going on to identify where things are getting saved or where a problem might be occuring. Then the mapping template is for users who which to code their own cartopy maps. The goal is to have you download the software and just run it.That's why everything has been taken care of including default templates that map over most of the world.
+This program was written with the intention of having the user "program" as little as possible. The only "code" the user should have to touch is the "main" file and the my_pyDatPicture_mapping.py (if you would like to make your own map). In the main.py file, the user can change any of the default settings. In most cases that requires removing the #. Other cases will require you to add a file name or file path with " " on each side, to the right of the = sign. The output is very verbose so you can follow what is going on to identify where things are getting saved or where a problem might be occuring. Then the mapping template is for users who which to code their own cartopy maps. The goal is to have you download the software and just run it. That's why everything is provided, including default templates that map over most of the world and robust quality control algorithms.
 
 
 # 2. Installation
 
 ## 2.1 Required Software
-- EXIFTOOLS (REQUIRED: Phil Harvey: <https://sno.phy.queensu.ca/~phil/exiftool/>)
+- Download the PyDatPicture code from Github (<https://github.com/allenea/PyDatPicture>)
+- EXIFTOOLS By Phil Harvey (REQUIRED: <https://sno.phy.queensu.ca/~phil/exiftool/>)
 - Python 3 (REQUIRED: I HIGHLY RECOMMEND: Anaconda https://www.anaconda.com/distribution/#download-section)
 
 	**WITH THE FOLLOWING PYTHON MODULES:**
@@ -31,13 +32,13 @@ This program was written with the intention of having the user program as little
 	- **The pre-installed modules for everyone should include: dateutil, os, sys, getpass, pathlib, shutil, re**
 	
 	
-If you are using anaconda, then there is a chance, fingers crossed, that any required (missing) software will be automatically installed. This has not been tested.
+If you are using anaconda, then there is a chance, fingers crossed, that any required (missing) software will be automatically installed. This has not been tested. If not just follow these steps.
 
 
 ## 2.2 Compatiability & File Paths
-- Compatible with Windows and OS X systems. Unknown for Linux. 
-    - For windows users it is assumed that you are on the C: drive.
-    - For OS X users it is assumed that you are on the /Users/ directory.
+- Compatible with Windows and OS X systems. Unknown for Linux (let me know?). 
+    - For Windows users it is assumed that you are on your C: drive.
+    - For OS X users it is assumed that you are on the /Users/ directory for your username.
 - Default settings are for a recursive search of the default Pictures folder location.
 - Depending on the number of photos you have the initial gathering of photo data could take a few minutes to a few hours.
 - You can always set the path to start looking recursively from your computers root/home directory. Not done by default.
@@ -50,17 +51,22 @@ If you are using anaconda, then there is a chance, fingers crossed, that any req
   
 #### EXTRACT_PHOTO_METADATA
 	Default: True -> Get Data
-	Alternative: False -> Use an existing data file created by PyDatPicture
+	
+	Alternative: False -> Use an existing data file created by PyDatPicture. 
+    	Set the filename in RAW_FILE and RAW_METADATA_FILE.
+    	
 > my_run.EXTRACT_PHOTO_METADATA = True
 
 
 #### INPUT_PIC_DIRECTORY
 	Default: Pictures directory/folder for Windows and Mac users
-             
+           
 		(/Users/username/Pictures/)
 	     
              getpass.getuser() -> your computer account login username
              
+    Alternative: Set to any location on your machine
+    
              You can also just put the root directory for your machine and
              it will just search everything, but that takes more time.
              
@@ -69,6 +75,8 @@ If you are using anaconda, then there is a chance, fingers crossed, that any req
 
 #### OUTPUT_DIRECTORY
 	Default: os.path.abspath("../Output")  -> ./PyDatPicture/Output/
+	
+    Alternative: Set to any location on your machine
 
 	Where the output data (figures and data) will be saved
 
@@ -78,6 +86,8 @@ If you are using anaconda, then there is a chance, fingers crossed, that any req
 #### RAW_FILE (see above)
 	Default: "ImageMetadata_raw.csv"
 	
+	Alternative: Any name in quotes (no spaces) ending with .csv
+	
 	1. Text Data extracted from EXIFTOOL
 
 > my_run.RAW_FILE = "test_ImageMetadataRaw.csv"
@@ -86,6 +96,8 @@ If you are using anaconda, then there is a chance, fingers crossed, that any req
 #### POST_FILE (see above)
 	Default: "ImageMetadata_final.csv"
 	
+	Alternative: Any name in quotes (no spaces) ending with .csv
+
 	2. Text Data -> Numerical Data
 
 >my_run.POST_FILE = "test_ImageMetadata_final.csv"
@@ -94,6 +106,8 @@ If you are using anaconda, then there is a chance, fingers crossed, that any req
 #### GEOCODE_FILE (see above)
 	Default: "ImageMetadata_geocode.csv"
 	
+	Alternative: Any name in quotes (no spaces) ending with .csv
+
 	3. Numerical data with the address associated with the coordinates.
 
 >my_run.GEOCODE_FILE = "test_ImageMetadata_geocode.csv"
@@ -101,6 +115,8 @@ If you are using anaconda, then there is a chance, fingers crossed, that any req
 
 #### OUTLIERS_FILE (see above)
 	Default: "ImageMetadata_remove_outliers.csv"
+	
+	Alternative: Any name in quotes (no spaces) ending with .csv
 
 	4. Numerical data after all the quality control steps
 
@@ -120,7 +136,9 @@ If you are using anaconda, then there is a chance, fingers crossed, that any req
 
 #### PERCENTILE
 	Default: "99th" (as type string) -> Detect outside of the 99th percentile
-
+	
+    Alternative: Select any of the other preset percentile options enclosed in " "
+    
 	Preset Options = 1st, 2.5th, 5th, 10th, 25th, 50th, 75th, 90th, 95th, 
 			97.5th, 99th
 
@@ -138,6 +156,7 @@ If you are using anaconda, then there is a chance, fingers crossed, that any req
 
 #### SELECT_DEVICES
 	Default: False -> Use all devices
+	
 	Alternative: True -> Use selcted devices defined by DEVICES below
 
 >my_run.SELECT_DEVICES = True
@@ -145,6 +164,7 @@ If you are using anaconda, then there is a chance, fingers crossed, that any req
 
 #### DEVICES
 	Default: [] -> Empty List
+	
 	Alternative: -> List of strings with acceptable models 
 
 >my_run.DEVICES = ["iPhone X"]
@@ -152,6 +172,7 @@ If you are using anaconda, then there is a chance, fingers crossed, that any req
 
 #### DO_RECURSIVE
 	Default: True  -> Search All Folders and Subfolders
+	
 	Alternative: False -> Search ONLY the immediate directory 
 
 >my_run.DO_RECURSIVE = False
@@ -159,6 +180,7 @@ If you are using anaconda, then there is a chance, fingers crossed, that any req
 
 #### REVERSE_GEOCODE 
 	Default: False -> Do not reverse geocode
+	
 	Alternative: True -> Reverse geocode the data (not to exceed 100)
 
 	This is limited to the first 100 coordinates. Suggested you select certain
@@ -170,6 +192,7 @@ If you are using anaconda, then there is a chance, fingers crossed, that any req
 
 #### MAPIT
 	Default: True -> Map the data
+	
 	Alternative: False -> Do not map any of the data
 
 >my_run.MAPIT = False
@@ -189,7 +212,7 @@ If you are using anaconda, then there is a chance, fingers crossed, that any req
 #### MAP_DATA_FILE
 	Default: ImageMetadata_final.csv
 
-	You can specify with output PyDatPicture data file you want mapped.
+    Alternative: You can specify an output PyDatPicture data file you want mapped.
 
 		Here you should give the file name
 
@@ -197,7 +220,7 @@ If you are using anaconda, then there is a chance, fingers crossed, that any req
 
 
 #### MAP_DATA_PATH
-	Default: OUTPUT_DIRECTORY/Data/ Path
+	Default: OUTPUT_DIRECTORY/Data/ <- PATH
 
 	If MY_MAP is True then you have an opportunity to provide a separate source
 	    of data created by PyDatPicture. 
@@ -208,7 +231,7 @@ If you are using anaconda, then there is a chance, fingers crossed, that any req
 
 
 #### MAPPING_PROGRAM
-    Default: The main PyDatPicture directory where the sample script is kept
+    Default: The run_me PyDatPicture directory where the sample script is kept
 
     If MY_MAP is True then you have an opportunity to provide your own 
     mapping/plotting code for PyDatPicture provided within the template
@@ -217,7 +240,7 @@ If you are using anaconda, then there is a chance, fingers crossed, that any req
     Provide the path to the directory that holds my_pyDatPicture_mapping.py
     file
 
->my_run.MAPPING_PROGRAM = os.path.abspath("../")
+>my_run.MAPPING_PROGRAM = os.path.abspath("../run_me")
 
 
 #### PLOT_PATH
@@ -280,6 +303,10 @@ If you are using anaconda, then there is a chance, fingers crossed, that any req
 
 ## 3.1 PyDatPicture Code
 
+    - **main.py** is the main program that is actually executed. This file contains the user variables which the user can change if they do not want to use the default values.
+    - **my_pyDatPicture_mapping.py** User modifiable custom-mapping routine
+
+
 - **pyDatPicture/src**
     - **core.py** Is the core of the PyDatPicture algorithm. It helps facilitate everything.
     
@@ -288,9 +315,7 @@ If you are using anaconda, then there is a chance, fingers crossed, that any req
     - **get_image_data.py** Runs the exiftools command to extract the metadata and save it to a csv file which can then be processed by PyDatPicture.
     
     - **get_lat_lon.py** Parses the text string for latitude and longitude to calculate the decimal degree value from DMS then applies references for N/S and E/W.
-    
-    - **main.py** is the main program that is actually executed. This file contains the user variables which the user can change if they do not want to use the default values.
-    
+        
     - **map_it.py**  Is the default mapping routine that is packaged with PyDatPicture
     
     - **pDP_Setup.py**  Checks to see if you have all the necessary software installed. If not it will hopefully help to install whatever isn’t there or point you towards what needs installed.
@@ -347,12 +372,11 @@ If you are using anaconda, then there is a chance, fingers crossed, that any req
 	- **Output/Figures/**  Comes empty, but will hold the output figures by default
 
 
+
 - **tests/**
 	- **test_all.py** Contains tests to make sure that the program is working as it should
 
 - **README.md** Contains documentation and instructions for PyDatPicture
-
-- **my_pyDatPicture_mapping.py** User modifiable custom-mapping routine
 
 - **LICENSE** GNU GPLv3 License
 	
@@ -374,7 +398,7 @@ If you are using anaconda, then there is a chance, fingers crossed, that any req
 
 * Address -   OPTIONAL IN A LIMITED CAPACITY (str)
 
-	- Reverse geocoding addresses with PAID API will require a few modifications.
+	- Reverse geocoding the addresses with a PAID API will require a few modifications.
             
 	    
 	    
@@ -388,20 +412,21 @@ If you are using anaconda, then there is a chance, fingers crossed, that any req
         accounts for REMOVE_PHOTOS_TAKEN_BY_PLANE (Altitude above 8000m, 
         or speed greater than 75 km/hr and altitude above 1000m) or by
         the DEVICE that was used to take the picture, if SELECT_DEVICES is
-        turned on. The Date, Time, Latitude, and Longitude is
+        turned on. These can be set in the run_me file. 
+        The Date, Time, Latitude, and Longitude is
         corrected for the reference (N/S, E/W) and saved as
-        a numeric numbers. Date/Time is reformatted. Numerical Data.
+        a numerical values. Date/Time is reformatted. Numerical Data.
         
 3. GEOCODE_METADATA_FILE 
-    - Data (not to exceed 100 coordinates without modifying the
-         code, should only be done if you have a paid API...) that
-         is saved in POST_PROCESSED_DATA file (numerical latitude 
+    - Data that is saved in POST_PROCESSED_DATA file (numerical latitude 
          and longitude) is used to get a physical address of the
          locations the picture was taken. It is recommended that you
          create a folder with select photos not to exceed 100
          and run this program on that set of data. The API will
          kick you off with too many calls. I can't control that.
          Numerical Data.
+        * Not to exceed 100 coordinates without modifying the
+         code, should only be done if you have a paid API...
 
 4. OUTLIER_QC_METADATA_FILE
     - This is a really neat feature that uses spatial
@@ -409,7 +434,7 @@ If you are using anaconda, then there is a chance, fingers crossed, that any req
         pictures that were taken at places you may not
         have visisted before. Maybe you downloaded a picture
         off the internet or a friend sent you a picture from
-        their trip to someplace you have not been. If this
+        their trip to some place you have never been. If this
         happens, the address is shown and then the CONSOLE
         ALLOWS YOU TO DECIDE IF THE PICTURE'S LOCATION
         SHOULD BE INCLUDED IN THE FINAL OUTPUT. This can be
@@ -440,7 +465,7 @@ If you are using anaconda, then there is a chance, fingers crossed, that any req
 
 Requires you to have your final output file that you want to map.
 
-<COMING SOON... A Step-By-Step Guide...>
+ < COMING SOON... A Step-By-Step Guide...>
 
 
 ## 4.2 MAPPING IN PYTHON
@@ -453,7 +478,9 @@ Use the PLOT_PATH to direct PyDatPicture where it should save your figure files.
 
 #### 4.2.1 MAPIT.py
 	> map_data(longitude,latitude,usr_vars)
-This is the default mapping program that I wrote in like two minutes covering what I believe are the major travel areas of the world. Obviously I am missing many regions. You can add them to this file or adjust these as you wish. This file takes in longitude, latitude, and the dictionary usr_vars.
+This is the default mapping program that I wrote in like two minutes covering what I believe are the major travel areas of the world. Obviously I am missing many regions. You can add them to this file or adjust these as you wish. This file takes in longitude, latitude, and the dictionary usr_vars as parameters.
+
+By default, it will use the last data file to the extent your performed quality control on your data. This can be changed using the MAP_DATA_FILE and MAP_DATA_PATH variables as described above.
 
 #### 4.2.2 my_pyDatPicture_mapping.py
 	> map_data(usr_vars)
@@ -463,11 +490,11 @@ There should only be two files you need to touch.
 
 # 5 PRIVACY
 
-I don't trust those online websites that say they'll what PyDatPicture does for you. First they just aren't simple to use and second I don't want to give some random website my pictures. Other tools to extract metadata from pictures aren't this simple to use or make it this easy to map the data. But with PyDatPicture you control your data, who has access to it, and it's an easy tool to use.
+I don't trust those online websites that say they'll what PyDatPicture does for you. First they just aren't simple to use and second I don't want to give some random website my pictures. Other tools to extract metadata from pictures aren't this simple to use or make it this easy to map the data. **But with PyDatPicture you control your data, who has access to it, and it's an easy tool to use.**
 
 # 6 ACKNOWLEDGEMENTS
 
-Please acknowledge Eric Allen and PyDatPicture in any work that is not for personal use. Not bad for a meteorologist who coded this in about a week and a half, eh? Two weeks start to finish since I had the idea of mapping my travels in GIS.  Spread the word about this program. Use #PyDatPicture in any social media posts where you are sharing maps of your travels.
+Please acknowledge Eric Allen and PyDatPicture in any work that is not for personal use. Not bad for a meteorologist who coded this in about a week and a half, eh? Spread the word about this program. Use #PyDatPicture in any social media posts where you are sharing maps of your travels.
 
 
 **“Travel makes one modest. You see what a tiny place you occupy in the world.” -Gustav Flaubert**
