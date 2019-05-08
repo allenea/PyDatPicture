@@ -334,9 +334,9 @@ If you are using anaconda, then there is a chance, fingers crossed, that any req
 
 - Longitude - (float) Decimal Degrees (Negative values are West)
 
-* Address -   OPTIONAL IN A LIMITED CAPACITY (str) 
+* Address -   OPTIONAL IN A LIMITED CAPACITY (str)
 
-	    Reverse geocoded address (OR WITH PAID API)
+	- Reverse geocoded address (OR WITH PAID API)
                     
                     
 1. RAW_METADATA_FILE 
