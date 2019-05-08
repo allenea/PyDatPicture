@@ -14,7 +14,7 @@ This program was written with the intention of having the user "program" as litt
 ## 2.1 Required Software
 - Download the PyDatPicture code from Github (<https://github.com/allenea/PyDatPicture>)
 - EXIFTOOLS By Phil Harvey (REQUIRED: <https://sno.phy.queensu.ca/~phil/exiftool/>)
-- Python 3 (REQUIRED: I HIGHLY RECOMMEND: Anaconda https://www.anaconda.com/distribution/#download-section)
+- Python 3 (REQUIRED: I HIGHLY RECOMMEND Anaconda https://www.anaconda.com/distribution/#download-section)
 
 	**WITH THE FOLLOWING PYTHON MODULES:**
 	
