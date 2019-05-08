@@ -1,4 +1,4 @@
-# pyDatPicture
+# PyDatPicture
 By Eric Allen
 Last Modified: 8 May 2019 at 2:00AM EDT
 
