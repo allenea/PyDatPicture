@@ -31,7 +31,7 @@ This program was written with the intention of having the user program as little
 	- **The pre-installed modules for everyone should include: dateutil, os, sys, getpass, pathlib, shutil, re**
 	
 	
-If you are using anaconda, then there is a chance (fingers crossed) that any required missing software will be automatically installed. This has not been tested.
+If you are using anaconda, then there is a chance, fingers crossed, that any required (missing) software will be automatically installed. This has not been tested.
 
 
 ## 2.2 Compatiability & File Paths
@@ -57,7 +57,7 @@ If you are using anaconda, then there is a chance (fingers crossed) that any req
 #### INPUT_PIC_DIRECTORY
 	Default: Pictures directory/folder for Windows and Mac users
              
-	     (/Users/username/Pictures/)
+		(/Users/username/Pictures/)
 	     
              getpass.getuser() -> your computer account login username
              
@@ -68,52 +68,52 @@ If you are using anaconda, then there is a chance (fingers crossed) that any req
 
 
 #### OUTPUT_DIRECTORY
-	Where the output data (figures and data) will be saved
-
 	Default: os.path.abspath("../Output")  -> ./PyDatPicture/Output/
+
+	Where the output data (figures and data) will be saved
 
 > my_run.OUTPUT_DIRECTORY = os.path.abspath("../Output")
 
 
 #### RAW_FILE (see above)
-	1. Text Data extracted from EXIFTOOL
-
 	Default: "ImageMetadata_raw.csv"
+	
+	1. Text Data extracted from EXIFTOOL
 
 > my_run.RAW_FILE = "test_ImageMetadataRaw.csv"
 
 
 #### POST_FILE (see above)
-	2. Text Data -> Numerical Data
-
 	Default: "ImageMetadata_final.csv"
+	
+	2. Text Data -> Numerical Data
 
 >my_run.POST_FILE = "test_ImageMetadata_final.csv"
 
 
 #### GEOCODE_FILE (see above)
-	3. Numerical data with the address associated with the coordinates.
-
 	Default: "ImageMetadata_geocode.csv"
+	
+	3. Numerical data with the address associated with the coordinates.
 
 >my_run.GEOCODE_FILE = "test_ImageMetadata_geocode.csv"
 
 
 #### OUTLIARS_FILE (see above)
-	4. Numerical data after all the quality control steps
-
 	Default: "ImageMetadata_remove_outliers.csv"
+
+	4. Numerical data after all the quality control steps
 
 >my_run.OUTLIARS_FILE = "test_ImageMetadata_remove_outliers.csv"
 
 
 #### DETECT_OUTLIARS
-	Will also use PERCENTILE to determine what is an outliar.
-
 	Default: True  -> Use spatial analysis to predict places you haven't been 
 			    (if any) from the data and allow you to decide what to use
 
 	Alternative: False -> Use whatever data is there
+	
+	Will also use PERCENTILE to determine what is an outliar.
 
 >my_run.DETECT_OUTLIARS = False
 
@@ -158,12 +158,12 @@ If you are using anaconda, then there is a chance (fingers crossed) that any req
 
 
 #### REVERSE_GEOCODE 
+	Default: False -> Do not reverse geocode
+	Alternative: True -> Reverse geocode the data (not to exceed 100)
+
 	This is limited to the first 100 coordinates. Suggested you select certain
 	pictures < 100 and then pass that raw data to PyDatPicture with this turned
 	to True
-
-	Default: False -> Do not reverse geocode
-	Alternative: True -> Reverse geocode the data (not to exceed 100)
 
 >my_run.REVERSE_GEOCODE = True
 
@@ -187,35 +187,35 @@ If you are using anaconda, then there is a chance (fingers crossed) that any req
 
 
 #### MAP_DATA_FILE
+	Default: ImageMetadata_final.csv
+
 	You can specify with output PyDatPicture data file you want mapped.
 
 		Here you should give the file name
-
-	Default: ImageMetadata_final.csv
 
 >my_run.MAP_DATA_FILE = "ImageMetadata_final.csv"
 
 
 #### MAP_DATA_PATH
+	Default: OUTPUT_DIRECTORY/Data/ Path
+
 	If MY_MAP is True then you have an opportunity to provide a separate source
 	    of data created by PyDatPicture. 
     
         Here you should give the path the the data file
         
-	Default: OUTPUT_DIRECTORY/Data/ Path
-
 >my_run.MAP_DATA_PATH = "/Users/"+getpass.getuser()+"/Documents/GitHub/PyDatPicture/output/Data/"
 
 
 #### MAPPING_PROGRAM
+    Default: The main PyDatPicture directory where the sample script is kept
+
     If MY_MAP is True then you have an opportunity to provide your own 
     mapping/plotting code for PyDatPicture provided within the template
     my_pyDatPicture_mapping.
     
     Provide the path to the directory that holds my_pyDatPicture_mapping.py
     file
-    
-    Default: The main PyDatPicture directory where the sample script is kept
 
 >my_run.MAPPING_PROGRAM = os.path.abspath("../")
 
@@ -240,34 +240,34 @@ If you are using anaconda, then there is a chance (fingers crossed) that any req
 
 
 #### RAW_METADATA_FILE
-	1. Text Data extracted from EXIFTOOL
-
 	Default: OUTPUT_DIRECTORY +'/Data/'+ RAW_FILE
+
+	1. Text Data extracted from EXIFTOOL
 
 > my_run.RAW_METADATA_FILE = os.path.join(my_run.PROCESSED_DATA, my_run.RAW_FILE)
 
 
 #### POST_PROCESSED_DATA
-	2. Text Data -> Numerical Data
-
 	Default: PROCESSED_DATA +'/Data/'+ POST_FILE
+
+	2. Text Data -> Numerical Data
 
 > my_run.POST_PROCESSED_DATA = os.path.join(my_run.PROCESSED_DATA, my_run.POST_FILE)
 
                                           
 #### GEOCODE_METADATA_FILE
-	3. Numerical Data With Address Associated With the Coordinates
-
 	Default: OUTPUT_DIRECTORY +'/Data/'+ GEOCODE_FILE
+
+	3. Numerical Data With Address Associated With the Coordinates
 
 > my_run.GEOCODE_METADATA_FILE = os.path.join(my_run.PROCESSED_DATA, my_run.GEOCODE_FILE)
 
                                         
 
 #### OUTLIAR_QC_METADATA_FILE 
-	4. Numerical Data after all Quality Control
-
 	Default: OUTPUT_DIRECTORY +'/Data/'+ OUTLIARS_FILE
+
+	4. Numerical Data after all Quality Control
 
 > my_run.OUTLIAR_QC_METADATA_FILE = os.path.join(my_run.PROCESSED_DATA, my_run.OUTLIARS_FILE)
 
