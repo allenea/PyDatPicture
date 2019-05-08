@@ -399,6 +399,7 @@ If you are using anaconda, then there is a chance, fingers crossed, that any req
 
 
 # MAPPING
+
 ## MAPPING IN GIS
 <COMING SOON... A Step-By-Step Guide...>
 
@@ -415,7 +416,7 @@ Use the PLOT_PATH to direct PyDatPicture where it should save your figure files.
 	> map_data(longitude,latitude,usr_vars)
 This is the default mapping program that I wrote in like two minutes covering what I believe are the major travel areas of the world. Obviously I am missing many regions. You can add them to this file or adjust these as you wish. This file takes in longitude, latitude, and the dictionary usr_vars.
 
-## my_pyDatPicture_mapping.py
+#### my_pyDatPicture_mapping.py
 	> map_data(usr_vars)
 This is a file where you can create your own map with ANY PyDatPicture output file that contains latitude and longitude. This template was written so that you don't have to touch any of the src code. You need to switch MY_MAP to True and then you have the freedom to use the default data and just contribute your own mapping algorithm, and you can pass any PyDatPicture data output (new or old) just set the file name with MAP_DATA_FILE and then set the path to that file with MAP_DATA_PATH. DO NOT change the name of the my_pyDatPicture_mapping.py file or the function call. 
 
