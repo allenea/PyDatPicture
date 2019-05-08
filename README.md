@@ -42,12 +42,12 @@ If you are using anaconda, then there is a chance (fingers crossed) that any req
 
 ## 2.3 Setting up your main.py file
 
-**The user only needs to modify the main.py file, as needed. More often than not the default settings will not need to be changed.**
+**The user only needs to modify the main.py file, as needed. More often than not the default settings will not need to be changed. If the user wishes to include their own cartopy mapping routine, they can do so in the my_PyDatPicture_mapping.py template using the provided function definition.**
 
   
 #### EXTRACT_PHOTO_METADATA
-	Default: True   -> Get Data
-	Alternative: False -> Use an existing datafile created by PyDatPicture
+	Default: True -> Get Data
+	Alternative: False -> Use an existing data file created by PyDatPicture
 > my_run.EXTRACT_PHOTO_METADATA = True
 
 
@@ -61,7 +61,7 @@ If you are using anaconda, then there is a chance (fingers crossed) that any req
              You can also just put the root directory for your machine and
              it will just search everything, but that takes more time.
              
-> my_run.INPUT_PIC_DIRECTORY = "/Users/"+getpass.getuser()+"/Desktop/TEST/"
+> my_run.INPUT_PIC_DIRECTORY = "/Users/"+getpass.getuser()+"/Desktop/"  # FOR MAC OS USER
 
 
 #### OUTPUT_DIRECTORY
@@ -79,6 +79,7 @@ If you are using anaconda, then there is a chance (fingers crossed) that any req
 
 > my_run.RAW_FILE = "test_ImageMetadataRaw.csv"
 
+
 #### POST_FILE (see above)
 	2. Text Data -> Numerical Data
 
@@ -88,7 +89,7 @@ If you are using anaconda, then there is a chance (fingers crossed) that any req
 
 
 #### GEOCODE_FILE (see above)
-	3. Numerical Data With Address Associated With the Coordinates
+	3. Numerical data with the address associated with the coordinates.
 
 	Default: "ImageMetadata_geocode.csv"
 
@@ -96,7 +97,7 @@ If you are using anaconda, then there is a chance (fingers crossed) that any req
 
 
 #### OUTLIARS_FILE (see above)
-	4. Numerical Data after all Quality Control
+	4. Numerical data after all the quality control steps
 
 	Default: "ImageMetadata_remove_outliers.csv"
 
@@ -228,7 +229,7 @@ If you are using anaconda, then there is a chance (fingers crossed) that any req
 
 
 
-### INCLUDE THESE IF YOU CHANGED THE OUTPUT_DIRECTORY
+**INCLUDE THESE IF YOU CHANGED THE OUTPUT_DIRECTORY**
 
 
 #### PROCESSED_DATA
