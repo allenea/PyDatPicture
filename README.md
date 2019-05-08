@@ -328,15 +328,15 @@ If you are using anaconda, then there is a chance, fingers crossed, that any req
 ## 3.2 Output Files:
 
 **FORMAT**
-    - Date_Time - (str) YYYY-mm-dd HH:MM:SS (Depends on device time at photo)
-    
-    - Latitude - (float) Decimal Degrees (Negative values are South)
-    
-    - Longitude - (float) Decimal Degrees (Negative values are West)
-    
-    * Address -   OPTIONAL IN A LIMITED CAPACITY (str) 
-    
-                    Reverse geocoded address (OR WITH PAID API)
+- Date_Time - (str) YYYY-mm-dd HH:MM:SS (Depends on device time at photo)
+
+- Latitude - (float) Decimal Degrees (Negative values are South)
+
+- Longitude - (float) Decimal Degrees (Negative values are West)
+
+* Address -   OPTIONAL IN A LIMITED CAPACITY (str) 
+
+	    Reverse geocoded address (OR WITH PAID API)
                     
                     
 1. RAW_METADATA_FILE 
