@@ -46,7 +46,7 @@ class USER_DEFINED_VARIABLES(object):
                 
             # FOR MICROSOFT - WINDOWS USERS
             elif OS_SYSTEM == "win32" or OS_SYSTEM == "cygwin":
-                self.INPUT_PIC_DIRECTORY = str(Path( "C:", "Users",\
+                self.INPUT_PIC_DIRECTORY = str(Path( "C:","/", "Users",\
                                                     USER_ID,"Pictures"))
                 
             # FOR LINUX USERS   
@@ -59,7 +59,7 @@ class USER_DEFINED_VARIABLES(object):
             
         #Output path.. try to keep all the outputs together - by default
         if OUTPUT_DIRECTORY =="":
-            self.OUTPUT_DIRECTORY = os.path.join(os.getcwd(),'Output')
+            self.OUTPUT_DIRECTORY = os.path.abspath("../Output")
         else:
             self.OUTPUT_DIRECTORY = OUTPUT_DIRECTORY  ## Run directory?
         

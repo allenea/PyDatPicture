@@ -12,7 +12,6 @@ requirements:
         - python 3.*
         - numpy >=1.11.*
         - scipy
-        - dateutil
         - matplotlib
         - pandas
         - cartopy
@@ -24,19 +23,10 @@ requirements:
         - python 3.*
         - numpy >=1.11.*
         - scipy
-        - dateutil
         - matplotlib
         - pandas
         - cartopy
         - geopy
-test:
-  imports:
-    - PyDatPicture
-  requires:
-    - pytest
-  commands:
-    - cd tests
-    - pytest -q -rs test_all.py
      
 about:
   home: https://github.com/allenea/PyDatPicture
