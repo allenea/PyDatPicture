@@ -276,8 +276,6 @@ If you are using anaconda, then there is a chance, fingers crossed, that any req
 
 
 
-
-
 # 3. FILE STRUCTURE:
 
 ## 3.1 PyDatPicture Code
@@ -425,10 +423,14 @@ This is a file where you can create your own map with ANY PyDatPicture output fi
 
 There should only be two files you need to touch. 
 
+# 5 PRIVACY
 
-# ACKNOWLEDGEMENTS
+I don't trust those online websites that say they'll what PyDatPicture does for you. First they just aren't simple to use and second I don't want to give some random website my pictures. Other tools to extract metadata from pictures aren't this simple to use or make it this easy to map the data. But with PyDatPicture you control your data, who has access to it, and it's an easy tool to use.
 
-Please acknowledge Eric Allen and PyDatPicture in any work that is not for personal use. Not bad for a meteorologist who coded this in about a week and a half, eh? Two weeks start to finish since I had the idea of mapping my travels in GIS. Spread the word about this program. Use #PyDatPicture in any social media posts where you are sharing maps of your travels.
+# 6 ACKNOWLEDGEMENTS
+
+Please acknowledge Eric Allen and PyDatPicture in any work that is not for personal use. Not bad for a meteorologist who coded this in about a week and a half, eh? Two weeks start to finish since I had the idea of mapping my travels in GIS.  Spread the word about this program. Use #PyDatPicture in any social media posts where you are sharing maps of your travels.
+
 
 **“Travel makes one modest. You see what a tiny place you occupy in the world.” -Gustav Flaubert**
 
