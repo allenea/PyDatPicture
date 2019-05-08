@@ -230,7 +230,10 @@ If you are using anaconda, then there is a chance, fingers crossed, that any req
 
 
 
+
 **INCLUDE THESE IF YOU CHANGED THE OUTPUT_DIRECTORY**
+
+
 
 
 #### PROCESSED_DATA
@@ -326,9 +329,13 @@ If you are using anaconda, then there is a chance, fingers crossed, that any req
 
 **FORMAT**
     - Date_Time - (str) YYYY-mm-dd HH:MM:SS (Depends on device time at photo)
+    
     - Latitude - (float) Decimal Degrees (Negative values are South)
+    
     - Longitude - (float) Decimal Degrees (Negative values are West)
+    
     * Address -   OPTIONAL IN A LIMITED CAPACITY (str) 
+    
                     Reverse geocoded address (OR WITH PAID API)
                     
                     
