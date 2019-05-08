@@ -60,7 +60,7 @@ the world. You have an opportunity to save files at every point
                          and run this program on that set of data. The API will
                          kick you off with too many calls).
 
-4.OUTLIAR_QC_METADATA_FILE (This is a really neat feature that uses spatial
+4.OUTLIER_QC_METADATA_FILE (This is a really neat feature that uses spatial
                             analysis and statistics to figure out and predict
                             pictures that were taken at places you may/may not
                             have visisted before. Maybe you downloaded a picture
@@ -169,23 +169,23 @@ def set_user_vars():
     #my_run.GEOCODE_FILE = "test_ImageMetadata_geocode.csv"
     
     
-    """OUTLIARS_FILE (see above)
+    """OUTLIERS_FILE (see above)
     #4. Numerical Data after all Quality Control
 
     Default: "ImageMetadata_remove_outliers.csv"
     """
-    #my_run.OUTLIARS_FILE = "test_ImageMetadata_remove_outliers.csv"
+    #my_run.OUTLIERS_FILE = "test_ImageMetadata_remove_outliers.csv"
     
     
-    """DETECT_OUTLIARS
-    Will also use PERCENTILE to determine what is an outliar.
+    """DETECT_OUTLIERS
+    Will also use PERCENTILE to determine what is an outlier.
     
     Default: True  -> Use spatial analysis to predict places you haven't been 
                         (if any) from the data and allow you to decide what to use
                         
     Alternative: False -> Use whatever data is there
     """
-    #my_run.DETECT_OUTLIARS = False
+    #my_run.DETECT_OUTLIERS = False
     
     
     """PERCENTILE
@@ -337,13 +337,13 @@ def set_user_vars():
     
                                             
     
-    """OUTLIAR_QC_METADATA_FILE 
+    """OUTLIER_QC_METADATA_FILE 
     #4. Numerical Data after all Quality Control
     
-    Default: OUTPUT_DIRECTORY +'/Data/'+ OUTLIARS_FILE
+    Default: OUTPUT_DIRECTORY +'/Data/'+ OUTLIERS_FILE
     """
-    my_run.OUTLIAR_QC_METADATA_FILE = os.path.join(my_run.PROCESSED_DATA,\
-                                                   my_run.OUTLIARS_FILE)
+    my_run.OUTLIER_QC_METADATA_FILE = os.path.join(my_run.PROCESSED_DATA,\
+                                                   my_run.OUTLIERS_FILE)
 ###############################################################################
     #DO NOT EDIT BELOW
     

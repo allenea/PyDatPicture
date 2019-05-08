@@ -37,8 +37,8 @@ def main(usr_vars):
     data = pyDat.pyDatPicture(usr_vars)
 
     ## USES LIMITED GEOCODING
-    if usr_vars['DETECT_OUTLIARS'] == True:   
-        # SO WE CAN REDEFINE DATA FOR MAPPING IN CASE DETECT_OUTLIARS ISN'T USED
+    if usr_vars['DETECT_OUTLIERS'] == True:   
+        # SO WE CAN REDEFINE DATA FOR MAPPING IN CASE DETECT_OUTLIERS ISN'T USED
         datatmp = data 
         del data
         

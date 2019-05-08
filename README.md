@@ -99,23 +99,23 @@ If you are using anaconda, then there is a chance, fingers crossed, that any req
 >my_run.GEOCODE_FILE = "test_ImageMetadata_geocode.csv"
 
 
-#### OUTLIARS_FILE (see above)
+#### OUTLIERS_FILE (see above)
 	Default: "ImageMetadata_remove_outliers.csv"
 
 	4. Numerical data after all the quality control steps
 
->my_run.OUTLIARS_FILE = "test_ImageMetadata_remove_outliers.csv"
+>my_run.OUTLIERS_FILE = "test_ImageMetadata_remove_outliers.csv"
 
 
-#### DETECT_OUTLIARS
+#### DETECT_OUTLIERS
 	Default: True  -> Use spatial analysis to predict places you haven't been 
 			    (if any) from the data and allow you to decide what to use
 
 	Alternative: False -> Use whatever data is there
 	
-	Will also use PERCENTILE to determine what is an outliar.
+	Will also use PERCENTILE to determine what is an outlier.
 
->my_run.DETECT_OUTLIARS = False
+>my_run.DETECT_OUTLIERS = False
 
 
 #### PERCENTILE
@@ -267,12 +267,12 @@ If you are using anaconda, then there is a chance, fingers crossed, that any req
 
                                         
 
-#### OUTLIAR_QC_METADATA_FILE 
-	Default: OUTPUT_DIRECTORY +'/Data/'+ OUTLIARS_FILE
+#### OUTLIER_QC_METADATA_FILE 
+	Default: OUTPUT_DIRECTORY +'/Data/'+ OUTLIERS_FILE
 
 	4. Numerical Data after all Quality Control
 
-> my_run.OUTLIAR_QC_METADATA_FILE = os.path.join(my_run.PROCESSED_DATA, my_run.OUTLIARS_FILE)
+> my_run.OUTLIER_QC_METADATA_FILE = os.path.join(my_run.PROCESSED_DATA, my_run.OUTLIERS_FILE)
 
 
 
@@ -280,46 +280,84 @@ If you are using anaconda, then there is a chance, fingers crossed, that any req
 
 ## 3.1 PyDatPicture Code
 
-- **main.py** This is the program that you run after you have made the necessary changes in USER_DEFINED_VARIABLES.py. The other files should not need to be touched (outside of USER_DEFINED_VARIABLES).
-- **USER_DEFINED_VARIABLES.py** Contains the 10 variables that may need to be changed according to your computer and how you want to search and get the data. Contains instructions and examples.
-
 - **pyDatPicture/src**
-
-	- **wget.py** is a unlicensed program that supports in the downloading of the EXIFTOOL software in the event you haven't downloaded/installed it. This does not actually install the program. Instead it puts it on your desktop.
-	
-	- **pDP_Setup.py** will check to make sure you have the necessary software installed. If you are using Anaconda and are missing software, then pDP_Setup will assist in the installation process. Otherwise, you'll need to follow the instructions in the documentation.
-	
-	- **print_run_info.py** will print the results of the USER_DEFINED_VARIABLES and some systems information.
-	
-	- **get_image_data.py** will retrieve the data from your media located under the path that is set. Default location is the pictures folder for your computer user account. The output file by default is ImageMetadata_raw.csv but this can be changed in this file. The default option is "-r" or recursive to search the entire folder and it's subfolders. To not search the subfolders set recursive=False in the function call in pyDatPicture.py. Add additional variables at your own risk following Phil Harvey's documentation. The -common option could be added after -ee, and uncommenting the commented variables in pyDatPicture.py. 
-	
-	- **pyDatPicture.py** uses the extracted geolocation data from photos and cleans the data, returning a second csv with Time, Longitude, and Latitude for all photos that have geographic information.
-	
-	- **get_lat_lon.py** will parse the latitude and longitude strings which are in DMS format and return a float (in decimal degrees) adjusted by reference value.
-	
-	- **reformat_time.py** will reformat the date and time string to become YYYY-mm-dd HH:MM:SS
-	
-	- **reverse_geocode.py** will work in a limited capacity up to 100 photos/data points. This takes latitude and longitude and gives you an address for that location. Saves in an output file. This may or may not crash the program depending on the API - Nominatim. I recommend not using it unless absolutely necessary, if you do use it try to limit it to a handful of pictures.
-	
-	- **map_it.py** is starter code for mapping your data in python. See the Cartopy online documentation.
-
-- **pyDatPicture/Sample_Figures**
-	- **testplot_pictures.JPG** is the sample cartopy world view figure
-	
-	- **Europe_Sample.JPG** is the European view ArcGIS Pro created figure
-	
-	- **sample1.JPG** is a quick 6-pannel city view ArcGIS Pro created figure
-	
-	- **sample2.JPG** is a quick 6-pannel city view ArcGIS Pro created figure
-	
-	- **sample3.JPG** is a quick 6-pannel city view ArcGIS Pro created figure
+    - **core.py** Is the core of the PyDatPicture algorithm. It helps facilitate everything.
+    
+    - **detectOutlier.py** Is a statistical analysis feature that identifies potential outliers and requests feedback from the user as to whether or not to include the data in the final output.
+    
+    - **get_image_data.py** Runs the exiftools command to extract the metadata and save it to a csv file which can then be processed by PyDatPicture.
+    
+    - **get_lat_lon.py** Parses the text string for latitude and longitude to calculate the decimal degree value from DMS then applies references for N/S and E/W.
+    
+    - **main.py** is the main program that is actually executed. This file contains the user variables which the user can change if they do not want to use the default values.
+    
+    - **map_it.py**  Is the default mapping routine that is packaged with PyDatPicture
+    
+    - **pDP_Setup.py**  Checks to see if you have all the necessary software installed. If not it will hopefully help to install whatever isn’t there or point you towards what needs installed.
+    
+    - **print_run_info.py** Prints all the information about user variables and the run to the console/command line so you are able to traceback any potential issues. 
+    
+    - **pyDatPicture.py** Is the main processing algorithm that turns the text strings into numerical data that can then be analyzed and mapped.
+    
+    - **reformat_time.py** Reformats the date and time string into a more readable format.
+    
+    - **reverse_geocode.py** Takes geographic coordinates and reverse geocodes to obtain an physical address for that location.
+    
+    - **user_variables.py** is a class that contains all the user defined variables that can then be changed before being passed to the core program as a dictionary.
+    
+    - **wget.py** is a unlicensed program that supports in the downloading of the EXIFTOOL software in the event you haven't downloaded/installed it. This does not actually install the program. Instead it puts it on your desktop.
+    
+    - **__init__.py** is required to make Python treat directories containing the file as packages
 
 - **pyDatPicture/Documentation**
-	- **meta.yaml** I started trying to figure out how to host this code on Anaconda to do a conda install pyDatPicture (not working yet).
-	
 	- **WGET_README.md** is the README file for the wget program that was used.
+
+	- **pyDatPicture/Documentation/Sample_Figures**
+		- **testplot_pictures.JPG** is the sample cartopy world view figure
 	
-	- **PyDatPicture.ipynb** is the original documentation for the code
+		- **Europe_Sample.JPG** is the European view ArcGIS Pro created figure
+	
+		- **sample1.JPG** is a quick 6-pannel city view ArcGIS Pro created figure
+	
+		- **sample2.JPG** is a quick 6-pannel city view ArcGIS Pro created figure
+	
+		- **sample3.JPG** is a quick 6-pannel city view ArcGIS Pro created figure
+
+		- **Africa.jpeg** is a continent view, sample template, of cartopys mapping capabilities.
+	
+		- **Asia.jpeg** is a continent view, sample template, of cartopys mapping capabilities.
+	
+		- **Australia.jpeg** is a continent view, sample template, of cartopys mapping capabilities.
+
+		- **Europe.jpeg** is a continent view, sample template, of cartopys mapping capabilities.
+	
+		- **SouthAmerica.jpeg** is a continent view, sample template, of cartopys mapping capabilities.
+	
+		- **USA.jpeg** is a USA view, sample template, of cartopys mapping capabilities.
+
+		- **World.jpeg** is a world view, sample template, of cartopys mapping capabilities.
+
+
+- **conda_build**
+	- **meta.yaml** is NOT working, but a script to eventually build as an conda package.
+
+
+- **Output**
+	- **Output/Data/**  Comes empty, but will hold the output data by default
+	- **Output/Figures/**  Comes empty, but will hold the output figures by default
+
+
+- **tests/**
+	- **test_all.py** Contains tests to make sure that the program is working as it should
+
+- **README.md** Contains documentation and instructions for PyDatPicture
+
+- **my_pyDatPicture_mapping.py** User modifiable custom-mapping routine
+
+- **LICENSE** GNU GPLv3 License
+	
+	
+
 	
 	
 	
@@ -365,7 +403,7 @@ If you are using anaconda, then there is a chance, fingers crossed, that any req
          kick you off with too many calls. I can't control that.
          Numerical Data.
 
-4. OUTLIAR_QC_METADATA_FILE
+4. OUTLIER_QC_METADATA_FILE
     - This is a really neat feature that uses spatial
         analysis and statistics to figure out and predict
         pictures that were taken at places you may not

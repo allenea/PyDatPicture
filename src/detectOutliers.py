@@ -13,7 +13,7 @@ Returns csv file without the "random points" - allows the user to control what
 outliers are included.
 
 - For example I've been to Newport News,VA and Niagara Falls
-    but they were considered outliars. I've never been to China - remove.
+    but they were considered outliers. I've never been to China - remove.
 """
 
 import numpy as np
@@ -30,7 +30,7 @@ def detectOutliers(data,usr_vars,geo_fmt="degrees", percentile="99th"):
     Date_Time = list(data['Date_Time'])
     
     #output file
-    final_qc_file = usr_vars['OUTLIAR_QC_METADATA_FILE']
+    final_qc_file = usr_vars['OUTLIER_QC_METADATA_FILE']
     
     #Setup geocoder
     geopy.geocoders.options.default_user_agent = 'my_app/1'
@@ -112,7 +112,7 @@ def detectOutliers(data,usr_vars,geo_fmt="degrees", percentile="99th"):
     print("Standard Deviation Nearest Neightbor:  %10.3f"%STDNearest)
     print()
     
-    #Get out of range value to identify outliars
+    #Get out of range value to identify outliers
     OUT_OF_RANGE = get_out_of_range_value(percentile,MeanNearest,STDNearest)
     
     #Print Info to Console

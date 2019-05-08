@@ -23,13 +23,13 @@ class USER_DEFINED_VARIABLES(object):
                  RAW_FILE="ImageMetadata_raw.csv",
                  POST_FILE="ImageMetadata_final.csv",
                  GEOCODE_FILE="ImageMetadata_geocode.csv",
-                 OUTLIARS_FILE="ImageMetadata_remove_outliers.csv",
+                 OUTLIERS_FILE="ImageMetadata_remove_outliers.csv",
                  EXTRACT_PHOTO_METADATA=True,
                  SELECT_DEVICES=False,
                  DEVICES=[],
                  REMOVE_PHOTOS_TAKEN_BY_PLANE=True,
                  DO_RECURSIVE=True,
-                 DETECT_OUTLIARS=True,
+                 DETECT_OUTLIERS=True,
                  PERCENTILE="99th",
                  REVERSE_GEOCODE=False,
                  MAPIT=True,
@@ -67,7 +67,7 @@ class USER_DEFINED_VARIABLES(object):
         self.RAW_FILE = RAW_FILE
         self.POST_FILE = POST_FILE
         self.GEOCODE_FILE = GEOCODE_FILE
-        self.OUTLIARS_FILE = OUTLIARS_FILE
+        self.OUTLIERS_FILE = OUTLIERS_FILE
         
         #Booleans and associated QC
         self.EXTRACT_PHOTO_METADATA = EXTRACT_PHOTO_METADATA
@@ -123,8 +123,8 @@ class USER_DEFINED_VARIABLES(object):
                'OUTPUT_DIRECTORY':self.OUTPUT_DIRECTORY,\
                'GEOCODE_FILE':self.GEOCODE_FILE,\
                'GEOCODE_METADATA_FILE':self.GEOCODE_METADATA_FILE,\
-               'OUTLIARS_FILE':self.OUTLIARS_FILE,\
-               'OUTLIAR_QC_METADATA_FILE':self.OUTLIAR_QC_METADATA_FILE,\
+               'OUTLIERS_FILE':self.OUTLIERS_FILE,\
+               'OUTLIER_QC_METADATA_FILE':self.OUTLIER_QC_METADATA_FILE,\
                'PLOT_PATH':self.PLOT_PATH,'MAPIT':self.MAPIT,\
                'MY_MAP':self.MY_MAP, 'MAP_DATA_FILE':self.MAP_DATA_FILE,\
                'MAPPING_FILE':self._MAPPING_FILE,\
@@ -179,14 +179,14 @@ class USER_DEFINED_VARIABLES(object):
                'DEVICES':cls.DEVICES,\
                'REVERSE_GEOCODE':cls.REVERSE_GEOCODE,\
                'DO_RECURSIVE':cls.DO_RECURSIVE,\
-               'DETECT_OUTLIARS':cls.DETECT_OUTLIARS,\
+               'DETECT_OUTLIERS':cls.DETECT_OUTLIERS,\
                'PERCENTILE':cls.PERCENTILE,\
                'PROCESSED_DATA':cls.PROCESSED_DATA,\
                'OUTPUT_DIRECTORY':cls.OUTPUT_DIRECTORY,\
                'GEOCODE_FILE':cls.GEOCODE_FILE,\
                'GEOCODE_METADATA_FILE':cls.GEOCODE_METADATA_FILE,\
-               'OUTLIARS_FILE':cls.OUTLIARS_FILE,\
-               'OUTLIAR_QC_METADATA_FILE':cls.OUTLIAR_QC_METADATA_FILE,\
+               'OUTLIERS_FILE':cls.OUTLIERS_FILE,\
+               'OUTLIER_QC_METADATA_FILE':cls.OUTLIER_QC_METADATA_FILE,\
                'PLOT_PATH':cls.PLOT_PATH,'MAPIT':cls.MAPIT,\
                'MY_MAP':cls.MY_MAP, 'MAP_DATA_FILE':cls.MAP_DATA_FILE,\
                'MAPPING_FILE':cls._MAPPING_FILE,\
