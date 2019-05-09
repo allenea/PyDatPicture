@@ -125,7 +125,7 @@ def set_user_vars():
     Default: True   -> Get Data
     Alternative: False -> Use an existing datafile created by PyDatPicture
     """
-    my_run.EXTRACT_PHOTO_METADATA = True
+    my_run.EXTRACT_PHOTO_METADATA = False
     
     
     """INPUT_PIC_DIRECTORY

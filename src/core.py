@@ -66,7 +66,7 @@ def main(usr_vars):
             map_data(usr_vars)
 
         else:
-            from map_it import map_data
+            from src.map_it import map_data
             map_data(data['Longitude'],data['Latitude'],usr_vars)
     
     print("\n\npyDatPicture Complete")
