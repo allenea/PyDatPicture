@@ -10,7 +10,7 @@ source:
 requirements:
     build:
         - python 3.*
-        - numpy >=1.11.*
+        - numpy
         - scipy
         - matplotlib
         - pandas
@@ -21,7 +21,7 @@ requirements:
 
     run:
         - python 3.*
-        - numpy >=1.11.*
+        - numpy
         - scipy
         - matplotlib
         - pandas
@@ -36,7 +36,7 @@ about:
     Do you like to travel and take pictures? Now you can track where you've been using pyDatPicture.
     This module analyzes pictures/videos to identify geolocation data returning a list of times, latitude, and longitudes that can then be mapped in python or GIS.
   dev_url: https://github.com/allenea/PyDatPicture
-  doc_url: https://github.com/allenea/PyDatPicture/blob/master/PyDatPicture.ipynb
+  doc_url: https://github.com/allenea/PyDatPicture/blob/master/README.md
   doc_source_url: https://github.com/allenea/PyDatPicture/blob/master/README.md
   
   

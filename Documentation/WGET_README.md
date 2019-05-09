@@ -55,7 +55,7 @@ Alternative progress bar:
 
 ## ChangeLog
 ============
-2.2 (2014-07-19)
+2.2 (2014-07-19) 
  * it again can download without -o option
 
 2.1 (2014-07-10)

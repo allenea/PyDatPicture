@@ -125,7 +125,7 @@ def set_user_vars():
     Default: True   -> Get Data
     Alternative: False -> Use an existing datafile created by PyDatPicture
     """
-    my_run.EXTRACT_PHOTO_METADATA = False
+    my_run.EXTRACT_PHOTO_METADATA = True
     
     
     """INPUT_PIC_DIRECTORY
@@ -144,6 +144,7 @@ def set_user_vars():
     Where the output data (figures and data) will be saved
     
     Default: os.path.abspath("../Output")  -> ./PyDatPicture/Output/
+    Alternative: Provide your own path
     """
     my_run.OUTPUT_DIRECTORY = os.path.abspath("../Output")
     
@@ -288,7 +289,7 @@ def set_user_vars():
         
     #Default: The main PyDatPicture directory where the sample script is kept
     """
-    #my_run.MAPPING_PROGRAM = os.path.abspath("../")
+    #my_run.MAPPING_PROGRAM = os.path.abspath("../run_me/")
     
     
     """PLOT_PATH
@@ -297,9 +298,6 @@ def set_user_vars():
     #Default: OUTPUT_DIRECTORY +'/Figures/'
     """
     my_run.PLOT_PATH = os.path.join(my_run.OUTPUT_DIRECTORY,"Figures")
-    
-    
-    
 
     
     
