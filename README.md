@@ -464,9 +464,7 @@ If you are using anaconda, then there is a chance, fingers crossed, that any req
 
 ## 5.1 MAPPING IN GIS
 
-Requires you to have your final output file that you want to map.
-
- < COMING SOON... A Step-By-Step Guide...>
+First open your GIS software, create a project, and start a new map. My instructions will be through the POV of a ArcGIS Pro user. Go to Catalog -> Portal -> Living Atlas and select a background (i.e. World Imagery) or use the default topographic background. Then click the Map tab and select Add Data (under the layer section) -> XY Point Data. Select your file. The input table will be the csv file (quality controled or "final") depending on if you QC'd your data. The x field should be Longitude and the y field should be Latitude. Use the proper coordinate system, I selected GCS_WGS_1984. Then click run. Your data should appear. If your data appears only in one spot when there should be many points, then you are likely using the wrong projection. From there symbolize your data as you would like and create some nice maps in layout. This requires you to have output file that you want to map accessible by the ArcGIS software. More information for ArcGIS Pro or other GIS softare can be found online.
 
 
 ## 5.2 MAPPING IN PYTHON
