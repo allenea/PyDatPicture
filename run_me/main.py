@@ -3,7 +3,8 @@
 """
 Created on Mon May  6 19:17:02 2019
 
-@author: ericallen
+@author: Eric Allen
+Last Modified: 8 May 2019 3:50PM
 
 You are free to modify this code under the GNU General Public License v3.0
 <See license contained in the PyDatPicture repository/folder for more info>
@@ -102,9 +103,9 @@ In this file between the rows of ############
 import sys
 import getpass
 import os
-import user_variables as uv
-from print_run_info import print_info
-from core import main
+import src.user_variables as uv
+from src.print_run_info import print_info
+from src.core import main
 
 def set_user_vars():
     
@@ -123,7 +124,7 @@ def set_user_vars():
     Default: True   -> Get Data
     Alternative: False -> Use an existing datafile created by PyDatPicture
     """
-    my_run.EXTRACT_PHOTO_METADATA = True
+    my_run.EXTRACT_PHOTO_METADATA = False
     
     
     """INPUT_PIC_DIRECTORY
