@@ -81,7 +81,7 @@ If you are using anaconda, then there is a chance, fingers crossed, that any req
 #### 3.3 OUTPUT_DIRECTORY
 	Default: os.path.abspath("../Output")  -> ./PyDatPicture/Output/
 	
-    	Alternative: Set to any location on your machine
+    Alternative: Set to any location on your machine
 
 	Where the output data (figures and data) will be saved
 
@@ -142,7 +142,7 @@ If you are using anaconda, then there is a chance, fingers crossed, that any req
 #### 3.9 PERCENTILE
 	Default: "99th" (as type string) -> Detect outside of the 99th percentile
 	
-    	Alternative: Select any of the other preset percentile options enclosed in " "
+    Alternative: Select any of the other preset percentile options enclosed in " "
     
 	Preset Options = 1st, 2.5th, 5th, 10th, 25th, 50th, 75th, 90th, 95th, 
 			97.5th, 99th
