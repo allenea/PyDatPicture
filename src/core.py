@@ -10,10 +10,10 @@ Last Modified: 7 May 2019 at 12:30PM
 
 import sys
 import os
-import pyDatPicture as pyDat
-from reverse_geocode import reverse_geocode
-from detectOutliers import detectOutliers
-from get_image_data import getImageData
+import src.pyDatPicture as pyDat
+from src.reverse_geocode import reverse_geocode
+from src.detectOutliers import detectOutliers
+from src.get_image_data import getImageData
 
 
 def main(usr_vars):
@@ -62,7 +62,7 @@ def main(usr_vars):
 
         if usr_vars["MY_MAP"] == True:
             sys.path.append(usr_vars['MAPPING_PROGRAM'])
-            from my_pyDatPicture_mapping import map_data
+            from run_me.my_pyDatPicture_mapping import map_data
             map_data(usr_vars)
 
         else:

@@ -51,7 +51,7 @@ def reverse_geocode(usr_vars):
     
     geocode_file = usr_vars['GEOCODE_METADATA_FILE']
     
-    outHEADER = ["Date_Time", "Longitude", "Latitude","Address"]
+    outHEADER = ["Date_Time", "Longitude", "Latitude", "Address"]
     
     #Loop through and geocode
     for idy in range(len(OUT_DATA)):

@@ -20,8 +20,8 @@ import sys
 import os
 import numpy as np
 import pandas as pd
-from reformat_time import reformatTime
-from get_lat_lon import getLatLon
+from src.reformat_time import reformatTime
+from src.get_lat_lon import getLatLon
 
 def pyDatPicture(usr_vars):
     """ 

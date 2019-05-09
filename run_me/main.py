@@ -97,12 +97,13 @@ In this file between the rows of ############
     make any changes to configure for your data otherwise default settings will
     be used... Follow along with console output for more information. 
 """
-
-# Execute main() function
-
 import sys
 import getpass
 import os
+
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+
 import src.user_variables as uv
 from src.print_run_info import print_info
 from src.core import main
@@ -124,7 +125,7 @@ def set_user_vars():
     Default: True   -> Get Data
     Alternative: False -> Use an existing datafile created by PyDatPicture
     """
-    my_run.EXTRACT_PHOTO_METADATA = False
+    my_run.EXTRACT_PHOTO_METADATA = True
     
     
     """INPUT_PIC_DIRECTORY
@@ -345,7 +346,16 @@ def set_user_vars():
     """
     my_run.OUTLIER_QC_METADATA_FILE = os.path.join(my_run.PROCESSED_DATA,\
                                                    my_run.OUTLIERS_FILE)
+    
+    
+    
 ###############################################################################
+###############################################################################
+    
+    
+    
+    
+    
     #DO NOT EDIT BELOW
     
     
@@ -359,8 +369,9 @@ def set_user_vars():
 
 if __name__ == '__main__':
     
-    from pDP_Setup import setup_pyDatPicture
+    from src.pDP_Setup import setup_pyDatPicture
     
+    #Checks to make sure everything is installed
     isSetUp = setup_pyDatPicture()
     
     if isSetUp == False:
@@ -368,6 +379,7 @@ if __name__ == '__main__':
               "\nFollow PyDatPicture documentation to proceed.")
         sys.exit(0)
     else:
+        #Sets the variables
         myvars = set_user_vars()
-
+    #Runs the program
     main(myvars)
