@@ -19,8 +19,7 @@ from src.get_image_data import getImageData
 def main(usr_vars):
     
     if usr_vars['EXTRACT_PHOTO_METADATA'] == True:
-        
-        getImageData(usr_vars['INPUT_PIC_DIRECTORY'],\
+        getImageData(usr_vars['exiftool'], usr_vars['INPUT_PIC_DIRECTORY'],\
                      usr_vars['RAW_METADATA_FILE'],\
                      recursive=usr_vars['DO_RECURSIVE']) 
     

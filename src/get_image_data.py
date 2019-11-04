@@ -12,7 +12,7 @@ This code actually gets the raw metadata from your photos and saves it to
 """
 import os
 
-def getImageData(input_dir,raw_out,recursive=True):
+def getImageData(exiftool_dir, input_dir,raw_out,recursive=True):
     """
     This function retrieves the metadata and stores it in a csv file.
     
@@ -44,7 +44,7 @@ def getImageData(input_dir,raw_out,recursive=True):
     print()
     print("Having some warnings/errors in this step is normal\n")
     
-    command = ["exiftool -csv "+r+ " -ee -SourceFile -Model "+\
+    command = [exiftool_dir+" -csv "+r+ " -ee -SourceFile -Model "+\
               "-DateTimeOriginal -gps:GPSDateStamp -gps:GPSTimeStamp "+\
               "-gps:GPSLatitude -gps:GPSLatitudeRef -gps:GPSLongitude "+\
               "-gps:GPSLongitudeRef -gps:GPSAltitude -gps:GPSAltitudeRef "+\

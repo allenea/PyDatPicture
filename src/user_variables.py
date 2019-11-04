@@ -9,7 +9,13 @@ This class contains all the variables that are required by the program to take
 advantage of all it's capabilities. These can be changed by the user in main.py.
 
 Default settings are set here. Do not modify the code in here.
+
+
+UPDATE:
+    - Potentially write code to make sure that there is a / at the end of the paths that are provided.
+        - Variables:OUTPUT_DIRECTORY,PROCESSED_DATA,MAP_DATA_PATH
 """
+
 import os
 from pathlib import Path
 import getpass
@@ -24,6 +30,7 @@ class USER_DEFINED_VARIABLES(object):
                  POST_FILE="ImageMetadata_final.csv",
                  GEOCODE_FILE="ImageMetadata_geocode.csv",
                  OUTLIERS_FILE="ImageMetadata_remove_outliers.csv",
+                 exiftool="",
                  EXTRACT_PHOTO_METADATA=True,
                  SELECT_DEVICES=False,
                  DEVICES=[],
@@ -63,6 +70,7 @@ class USER_DEFINED_VARIABLES(object):
         else:
             self.OUTPUT_DIRECTORY = OUTPUT_DIRECTORY  ## Run directory?
         
+        self.exiftool = exiftool
         #File Names
         self.RAW_FILE = RAW_FILE
         self.POST_FILE = POST_FILE
@@ -108,6 +116,7 @@ class USER_DEFINED_VARIABLES(object):
         
         #Dictionary of Variables... Used by the other programs
         self._user_vars = {'EXTRACT_PHOTO_METADATA':self.EXTRACT_PHOTO_METADATA,\
+               'exiftool':self.exiftool,\
                'INPUT_PIC_DIRECTORY':self.INPUT_PIC_DIRECTORY,\
                'POST_FILE':self.POST_FILE,\
                'POST_PROCESSED_DATA':self.POST_PROCESSED_DATA,\
@@ -169,6 +178,7 @@ class USER_DEFINED_VARIABLES(object):
         
         
         cls.user_vars = {'EXTRACT_PHOTO_METADATA':cls.EXTRACT_PHOTO_METADATA,\
+               'exiftool':cls.exiftool,\
                'INPUT_PIC_DIRECTORY':cls.INPUT_PIC_DIRECTORY,\
                'POST_FILE':cls.POST_FILE,\
                'POST_PROCESSED_DATA':cls.POST_PROCESSED_DATA,\

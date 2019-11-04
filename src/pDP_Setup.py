@@ -61,7 +61,7 @@ Last Modified: 7 May 2019 at 12:00PM
 
 
 """
-def setup_pyDatPicture():
+def setup_pyDatPicture(path_tool='/usr/local/bin'):
 
     try:
         import getpass
@@ -77,7 +77,7 @@ def setup_pyDatPicture():
     USER_ID = getpass.getuser()
     OS_SYSTEM = sys.platform
     
-    isEXIFTOOL = shutil.which("exiftool")
+    isEXIFTOOL = shutil.which("exiftool", path=path_tool)
     
     #Anaconda Environment
     if 'Anaconda' in sys.version:
@@ -184,7 +184,7 @@ def setup_pyDatPicture():
                       "in pyDatPicture.py")
                 return False
             getFile = "https://sno.phy.queensu.ca/~phil/exiftool/ExifTool-11.39.dmg"
-            outfile = APPS_DIR+ "ExifTool-11.39.dmg" 
+            outfile = os.path.join(APPS_DIR,"ExifTool-11.39.dmg")
             try:
                 os.remove(outfile) 
                 # Make sure there isn't already a file that hasn't been installed
@@ -205,7 +205,7 @@ def setup_pyDatPicture():
                 return False
             
             getFile = "https://sno.phy.queensu.ca/~phil/exiftool/"
-            outfile = APPS_DIR+ "exiftool-11.39.zip" 
+            outfile = os.path.join(APPS_DIR,"ExifTool-11.39.dmg")
             try:
                 os.remove(outfile) 
                 # Make sure there isn't already a file that hasn't been installed

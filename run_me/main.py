@@ -127,6 +127,10 @@ def set_user_vars():
     """
     my_run.EXTRACT_PHOTO_METADATA = True
     
+        
+    """Location of Exiftool Program
+    """    
+    my_run.exiftool = '/usr/local/bin/exiftool'
     
     """INPUT_PIC_DIRECTORY
     Default: Pictures directory/folder for Windows and Mac users
@@ -137,7 +141,7 @@ def set_user_vars():
                  You can also just put the root directory for your machine and
                  it will just search everything, but that takes more time.
     """
-    #my_run.INPUT_PIC_DIRECTORY = "/Users/"+getpass.getuser()+"/Desktop/TEST/"
+    #my_run.INPUT_PIC_DIRECTORY = os.path.abspath("../Test_Images/")
     
     
     """OUTPUT_DIRECTORY
@@ -345,23 +349,18 @@ def set_user_vars():
     my_run.OUTLIER_QC_METADATA_FILE = os.path.join(my_run.PROCESSED_DATA,\
                                                    my_run.OUTLIERS_FILE)
     
-    
-    
+
 ###############################################################################
 ###############################################################################
-    
-    
-    
     
     
     #DO NOT EDIT BELOW
-    
     
     #FINAL VARIABLES
     myvars = my_run.status_variables()
 
     print_info(myvars, isSetUp, USER_ID, OS_SYSTEM)
-    
+
     return myvars
 
 
@@ -370,7 +369,7 @@ if __name__ == '__main__':
     from src.pDP_Setup import setup_pyDatPicture
     
     #Checks to make sure everything is installed
-    isSetUp = setup_pyDatPicture()
+    isSetUp = setup_pyDatPicture(path_tool='/usr/local/bin')
     
     if isSetUp == False:
         print("ERROR: THE REQUIRED SOFTWARE IS NOT INSTALLED ON YOUR MACHINE.",\
